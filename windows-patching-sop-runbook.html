@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SOP & Runbook — Monthly Windows Server Patching (AUM)</title>
+<style>
+:root{
+  --bg:#0a0e17; --bg2:#111827; --card:#1a2236; --border:#1e2d45;
+  --blue:#3b82f6; --cyan:#06b6d4; --green:#10b981; --amber:#f59e0b; --red:#ef4444; --purple:#a78bfa;
+  --text:#e5e9f0; --muted:#8b96ab;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.55;}
+.wrap{display:flex;min-height:100vh;}
+nav{width:270px;flex-shrink:0;background:var(--bg2);border-right:1px solid var(--border);position:sticky;top:0;height:100vh;overflow-y:auto;padding:20px 14px;}
+nav h1{font-size:14px;color:var(--cyan);text-transform:uppercase;letter-spacing:.06em;margin:0 0 14px;}
+nav a{display:block;color:var(--muted);text-decoration:none;font-size:13px;padding:6px 8px;border-radius:6px;margin-bottom:2px;}
+nav a:hover{background:var(--card);color:var(--text);}
+nav a.h2{padding-left:8px;font-weight:600;color:#c3cbdc;margin-top:8px;}
+main{flex:1;padding:36px 48px;max-width:980px;}
+header.doc{border-bottom:1px solid var(--border);padding-bottom:20px;margin-bottom:30px;}
+header.doc h1{font-size:26px;margin:0 0 6px;color:#fff;}
+header.doc p{color:var(--muted);margin:2px 0;font-size:13.5px;}
+.badge{display:inline-block;background:var(--card);border:1px solid var(--border);color:var(--cyan);font-size:11px;padding:2px 8px;border-radius:20px;margin-right:6px;}
+section{margin-bottom:44px;scroll-margin-top:20px;}
+h2{font-size:20px;color:#fff;border-left:4px solid var(--blue);padding-left:12px;margin:0 0 16px;}
+h3{font-size:16px;color:var(--cyan);margin:24px 0 10px;}
+h4{font-size:14px;color:#c3cbdc;margin:16px 0 8px;}
+p{color:#d3d9e6;}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13px;}
+th,td{border:1px solid var(--border);padding:8px 10px;text-align:left;vertical-align:top;}
+th{background:var(--card);color:var(--cyan);font-weight:600;}
+tr:nth-child(even){background:#101627;}
+.card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:16px 18px;margin:14px 0;}
+.note{border-left:4px solid var(--blue);background:rgba(59,130,246,.08);}
+.warn{border-left:4px solid var(--amber);background:rgba(245,158,11,.08);}
+.danger{border-left:4px solid var(--red);background:rgba(239,68,68,.08);}
+.ok{border-left:4px solid var(--green);background:rgba(16,185,129,.08);}
+.tag-label{font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px;display:block;}
+.note .tag-label{color:var(--blue);}
+.warn .tag-label{color:var(--amber);}
+.danger .tag-label{color:var(--red);}
+.ok .tag-label{color:var(--green);}
+.codewrap{position:relative;background:#0d1420;border:1px solid var(--border);border-radius:8px;margin:10px 0;}
+.codewrap pre{margin:0;padding:12px 14px;overflow-x:auto;font-size:12.5px;color:#c9d3e6;}
+.copybtn{position:absolute;top:6px;right:6px;background:var(--card);border:1px solid var(--border);color:var(--muted);font-size:11px;padding:3px 8px;border-radius:6px;cursor:pointer;}
+.copybtn:hover{color:var(--text);border-color:var(--blue);}
+details.chk{background:var(--card);border:1px solid var(--border);border-radius:10px;margin:10px 0;padding:0;}
+details.chk summary{cursor:pointer;padding:12px 16px;font-weight:600;color:#fff;list-style:none;display:flex;justify-content:space-between;align-items:center;}
+details.chk summary::after{content:"+";color:var(--cyan);font-size:16px;}
+details.chk[open] summary::after{content:"–";}
+details.chk .body{padding:2px 18px 14px;}
+ul.chklist{list-style:none;padding:0;margin:6px 0;}
+ul.chklist li{padding:5px 0 5px 26px;position:relative;border-bottom:1px dashed var(--border);font-size:13.5px;}
+ul.chklist li:last-child{border-bottom:none;}
+ul.chklist li::before{content:"☐";position:absolute;left:0;color:var(--cyan);}
+.phase{border:1px solid var(--border);border-radius:10px;margin:14px 0;overflow:hidden;}
+.phase-head{background:linear-gradient(90deg,rgba(59,130,246,.15),transparent);padding:10px 16px;font-weight:700;color:#fff;border-bottom:1px solid var(--border);}
+.phase-body{padding:14px 18px;}
+.raci-key{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin:8px 0 16px;}
+.raci-key span b{color:var(--cyan);}
+code{background:#0d1420;padding:1px 6px;border-radius:4px;color:var(--cyan);font-size:12.5px;}
+.small{font-size:12px;color:var(--muted);}
+hr.sep{border:none;border-top:1px solid var(--border);margin:26px 0;}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav>
+<h1>SOP / Runbook</h1>
+<a href="#s1">1. Document Information</a>
+<a href="#s2">2. Roles &amp; RACI</a>
+<a href="#s3">3. Prerequisites</a>
+<a href="#s4">4. Pre-Implementation</a>
+<a href="#s5">5. VMware Snapshot Procedure</a>
+<a href="#s6">6. Azure Arc Tagging</a>
+<a href="#s7">7. Patch Deployment</a>
+<a href="#s8">8. Validation Activities</a>
+<a href="#s9">9. Evidence Collection</a>
+<a href="#s10">10. Communication</a>
+<a href="#s11">11. Rollback Procedure</a>
+<a href="#s12">12. Exception Handling</a>
+<a href="#s13">13. Post-Implementation</a>
+<a href="#s14">14. Reporting</a>
+<a href="#s15">15. Checklists</a>
+<a href="#s16">16. Best Practices</a>
+</nav>
+<main>
+<header class="doc">
+<h1>Standard Operating Procedure &amp; Runbook</h1>
+<p>Monthly Windows Server Patching — Azure Update Manager (Arc-Enabled, VMware vCenter-Hosted Fleet)</p>
+<span class="badge">Document Type: SOP + Runbook</span>
+<span class="badge">Classification: Internal / Operations</span>
+<span class="badge">Version 1.0</span>
+</header>
+
+<section id="s1">
+<h2>1. Document Information</h2>
+
+<h3>1.1 Purpose</h3>
+<p>This document defines the standard, repeatable procedure for performing monthly Windows Server patching across a VMware vCenter-hosted, Azure Arc-enabled server fleet, using Azure Update Manager (AUM) as the patch orchestration platform. It combines governing policy (SOP) with step-by-step execution instructions (Runbook) to ensure patching is performed consistently, safely, and with full auditability.</p>
+
+<h3>1.2 Scope</h3>
+<p>This SOP applies to all Windows Server virtual machines that are hosted on VMware vCenter and registered as Azure Arc-enabled servers, and that fall within a monthly patching cycle managed through Azure Update Manager. It covers the full lifecycle from Change Request approval through evidence collection and change closure. It does not cover non-Windows operating systems, non-Arc-enabled infrastructure, or ad hoc emergency/out-of-band patching, which are governed by separate procedures.</p>
+
+<h3>1.3 Objectives</h3>
+<table>
+<tr><th>#</th><th>Objective</th></tr>
+<tr><td>1</td><td>Ensure all in-scope Windows Server VMs receive applicable security and quality updates within the approved monthly maintenance window.</td></tr>
+<tr><td>2</td><td>Minimize business disruption through structured scheduling, snapshotting, and backup coordination.</td></tr>
+<tr><td>3</td><td>Provide a consistent, auditable evidence trail for every patching cycle.</td></tr>
+<tr><td>4</td><td>Standardize rollback and exception handling to reduce recovery time on failure.</td></tr>
+<tr><td>5</td><td>Enable operational scaling through Azure Arc tag-based targeting rather than manual VM selection.</td></tr>
+</table>
+
+<h3>1.4 Audience</h3>
+<p>Windows Team, Azure Administrators, VMware Administrators, Backup Team, Change Manager, CAB members, Operations Manager, Application/Service/VM Owners, and internal or external auditors reviewing patch compliance evidence.</p>
+
+<h3>1.5 Assumptions</h3>
+<div class="card note"><span class="tag-label">Assumptions</span>
+<ul class="chklist">
+<li>All target VMs are already onboarded to Azure Arc and reporting a Connected status prior to the start of a patching cycle.</li>
+<li>All target VMs have outbound internet connectivity to Microsoft Update endpoints.</li>
+<li>VMware vCenter is reachable and functional for snapshot operations during the maintenance window.</li>
+<li>A Change Management process (CR/CAB) is operational and mandatory prior to implementation.</li>
+<li>Four implementation engineers are available and workload is distributed across them for each cycle.</li>
+<li>Backup schedules can be adjusted by the Backup Team on request ahead of the maintenance window.</li>
+</ul>
+</div>
+
+<h3>1.6 References</h3>
+<ul>
+<li>Microsoft Learn — Azure Update Manager overview and documentation</li>
+<li>Microsoft Learn — Azure Arc-enabled servers documentation</li>
+<li>Organizational Change Management (ITIL) Policy</li>
+<li>Organizational Backup and Recovery Policy</li>
+<li>VMware vSphere/vCenter Snapshot Administration Guide</li>
+</ul>
+
+<h3>1.7 Definitions</h3>
+<table>
+<tr><th>Term</th><th>Definition</th></tr>
+<tr><td>Maintenance Window</td><td>The approved time period (02:00–10:00) during which patching activity is authorized to run.</td></tr>
+<tr><td>Maintenance Configuration</td><td>An AUM object defining schedule, scope, and update settings used to orchestrate patch deployment.</td></tr>
+<tr><td>Dynamic Scope</td><td>A tag-based query that AUM uses to resolve target VMs at run time rather than a static list.</td></tr>
+<tr><td>Assessment</td><td>An AUM operation that inventories missing updates on a target VM without installing them.</td></tr>
+</table>
+
+<h3>1.8 Acronyms</h3>
+<table>
+<tr><th>Acronym</th><th>Meaning</th></tr>
+<tr><td>AUM</td><td>Azure Update Manager</td></tr>
+<tr><td>CR</td><td>Change Request</td></tr>
+<tr><td>CAB</td><td>Change Advisory Board</td></tr>
+<tr><td>RACI</td><td>Responsible, Accountable, Consulted, Informed</td></tr>
+<tr><td>KB</td><td>Knowledge Base (Microsoft update identifier)</td></tr>
+<tr><td>VM</td><td>Virtual Machine</td></tr>
+<tr><td>SOP</td><td>Standard Operating Procedure</td></tr>
+</table>
+</section>
+
+<section id="s2">
+<h2>2. Roles and Responsibilities (RACI)</h2>
+<div class="raci-key">
+<span><b>R</b> = Responsible</span><span><b>A</b> = Accountable</span><span><b>C</b> = Consulted</span><span><b>I</b> = Informed</span>
+</div>
+<table>
+<tr><th>Activity</th><th>Change Manager</th><th>Windows Team</th><th>Azure Admin</th><th>VMware Admin</th><th>Backup Team</th><th>App Owners</th><th>VM/Service Owners</th><th>Ops Manager</th><th>CAB</th></tr>
+<tr><td>Raise &amp; approve CR</td><td>A</td><td>R</td><td>I</td><td>I</td><td>I</td><td>C</td><td>C</td><td>I</td><td>A</td></tr>
+<tr><td>Backup schedule adjustment</td><td>I</td><td>C</td><td>I</td><td>I</td><td>R/A</td><td>I</td><td>I</td><td>I</td><td>-</td></tr>
+<tr><td>VMware snapshot creation</td><td>I</td><td>C</td><td>I</td><td>R/A</td><td>C</td><td>I</td><td>I</td><td>I</td><td>-</td></tr>
+<tr><td>Azure Arc tagging</td><td>I</td><td>C</td><td>R/A</td><td>I</td><td>-</td><td>-</td><td>I</td><td>I</td><td>-</td></tr>
+<tr><td>Patch assessment &amp; deployment</td><td>I</td><td>R/A</td><td>C</td><td>C</td><td>-</td><td>I</td><td>I</td><td>I</td><td>-</td></tr>
+<tr><td>Validation &amp; evidence collection</td><td>I</td><td>R/A</td><td>C</td><td>C</td><td>-</td><td>I</td><td>I</td><td>I</td><td>-</td></tr>
+<tr><td>Rollback execution</td><td>I</td><td>R</td><td>C</td><td>R/A</td><td>C</td><td>I</td><td>I</td><td>I</td><td>I</td></tr>
+<tr><td>CR closure</td><td>A</td><td>R</td><td>I</td><td>I</td><td>I</td><td>I</td><td>I</td><td>I</td><td>I</td></tr>
+</table>
+<p class="small">CAB approval is required for the CR itself and for any rollback that constitutes a deviation from the approved implementation plan.</p>
+</section>
+
+<section id="s3">
+<h2>3. Prerequisites</h2>
+<p>The following must be verified and evidenced before implementation begins. No patching activity proceeds until every item below is confirmed.</p>
+<table>
+<tr><th>#</th><th>Prerequisite</th><th>Verification Method</th><th>Owner</th></tr>
+<tr><td>1</td><td>Approved Change Request</td><td>CR status = Approved in ITSM tool</td><td>Change Manager</td></tr>
+<tr><td>2</td><td>Maintenance window confirmed</td><td>CR schedule matches 02:00–10:00 window</td><td>Windows Team</td></tr>
+<tr><td>3</td><td>Required approvals obtained</td><td>CR approval log</td><td>Change Manager</td></tr>
+<tr><td>4</td><td>Azure Arc connectivity</td><td>All target VMs show <code>Connected</code> status</td><td>Azure Admin</td></tr>
+<tr><td>5</td><td>Azure Update Manager readiness</td><td>Maintenance Configuration exists and scope resolves target VMs</td><td>Azure Admin</td></tr>
+<tr><td>6</td><td>Internet connectivity</td><td>Endpoint reachability confirmed to Microsoft Update</td><td>Windows Team</td></tr>
+<tr><td>7</td><td>VM health</td><td>VMs powered on, no active alerts</td><td>VMware Admin / Windows Team</td></tr>
+<tr><td>8</td><td>Backup schedule adjusted</td><td>Backup Team confirmation received</td><td>Backup Team</td></tr>
+<tr><td>9</td><td>Snapshot completion</td><td>Snapshot task shows Success in vCenter</td><td>VMware Admin</td></tr>
+<tr><td>10</td><td>Required permissions</td><td>Engineer access verified in Azure RBAC and vCenter roles</td><td>Azure Admin / VMware Admin</td></tr>
+<tr><td>11</td><td>Rollback readiness</td><td>Snapshot present, restore path documented</td><td>VMware Admin</td></tr>
+</table>
+<div class="card danger"><span class="tag-label">Hard Gate</span>Do not proceed to Section 7 (Patch Deployment) if any prerequisite above is not met. Escalate to the Change Manager and Operations Manager.</div>
+</section>
+
+<section id="s4">
+<h2>4. Pre-Implementation Activities</h2>
+<p>Executed by the assigned implementation engineer(s) in the hours prior to the maintenance window, typically T-24h through T-1h.</p>
+
+<h3>4.1 Review Approved CR</h3>
+<ul class="chklist">
+<li>Confirm CR number, scope (VM list/tag), window, and assigned engineers</li>
+<li>Confirm rollback plan is attached to the CR</li>
+</ul>
+
+<h3>4.2 Confirm Maintenance Window</h3>
+<ul class="chklist">
+<li>Cross-check CR window against AUM Maintenance Configuration schedule</li>
+<li>Confirm no overlapping change activity on the same VMs</li>
+</ul>
+
+<h3>4.3 Notify Stakeholders</h3>
+<ul class="chklist">
+<li>Send Start Notification template (Section 10.1) to VM Owners, Service Owners, and Application Owners at T-24h</li>
+</ul>
+
+<h3>4.4 Confirm Backup Schedule Modification</h3>
+<ul class="chklist">
+<li>Request Backup Team pause/adjust standard backup jobs for target VMs during the window</li>
+<li>Obtain written confirmation from Backup Team</li>
+</ul>
+
+<h3>4.5 Verify Latest Successful Backup</h3>
+<ul class="chklist">
+<li>Confirm each target VM has a successful backup within the last 24 hours</li>
+<li>Escalate any VM without a recent successful backup — do not patch until resolved or formally accepted as risk by the Change Manager</li>
+</ul>
+
+<h3>4.6 Verify Azure Arc Connectivity</h3>
+<ul class="chklist">
+<li>Confirm all target VMs report <code>Connected</code> in Azure Arc</li>
+<li>Investigate and remediate any VM in <code>Disconnected</code> or <code>Error</code> state before proceeding</li>
+</ul>
+
+<h3>4.7 Verify Azure Update Manager Readiness</h3>
+<ul class="chklist">
+<li>Confirm Maintenance Configuration scope resolves the expected VM count</li>
+<li>Confirm patch schedule settings (reboot behavior, patch classifications) are correct</li>
+</ul>
+
+<h3>4.8 Verify VM Power State</h3>
+<ul class="chklist">
+<li>Confirm all target VMs are powered on and responsive</li>
+</ul>
+
+<h3>4.9 Verify Monitoring Status</h3>
+<ul class="chklist">
+<li>Place target VMs in scheduled maintenance mode in monitoring tools to suppress false alerts</li>
+</ul>
+
+<h3>4.10 Verify Azure &amp; VMware Permissions</h3>
+<ul class="chklist">
+<li>Confirm implementation engineers have required Azure RBAC roles (e.g., Update Manager operations)</li>
+<li>Confirm implementation engineers have required vCenter roles for snapshot operations</li>
+</ul>
+
+<div class="card ok"><span class="tag-label">Validation Checkpoint — Pre-Implementation</span>All ten items in Sections 4.1–4.10 must be confirmed complete and logged in the CR before moving to Section 5.</div>
+</section>
+
+<section id="s5">
+<h2>5. VMware Snapshot Procedure</h2>
+<p>Snapshots provide the primary rollback mechanism for this SOP and must be created for every target VM before any update is downloaded or installed.</p>
+
+<h3>5.1 Snapshot Naming Convention</h3>
+<div class="codewrap"><button class="copybtn" onclick="cp(this)">Copy</button><pre>PreUpdate_&lt;YYYYMMDD&gt;_&lt;CRNumber&gt;</pre></div>
+<p class="small">Example: <code>PreUpdate_20260805_CR102345</code></p>
+
+<h3>5.2 Description Format</h3>
+<div class="codewrap"><button class="copybtn" onclick="cp(this)">Copy</button><pre>Pre-patch snapshot | CR: &lt;CRNumber&gt; | Engineer: &lt;Name&gt; | Window: &lt;Date/Time&gt; | Purpose: Monthly Windows Patching Rollback Point</pre></div>
+
+<h3>5.3 Snapshot Execution Steps</h3>
+<ol>
+<li>Confirm no existing snapshot chain exceeds organizational retention/performance limits before creating a new one.</li>
+<li>Create snapshot with memory state excluded (memory snapshot not required for patch rollback use case) unless application-specific requirements dictate otherwise.</li>
+<li>Apply naming convention (5.1) and description format (5.2).</li>
+<li>Monitor snapshot task in vCenter Recent Tasks until status = Completed.</li>
+</ol>
+
+<h3>5.4 Snapshot Verification</h3>
+<ul class="chklist">
+<li>Confirm snapshot appears in the VM's Snapshot Manager</li>
+<li>Confirm snapshot task status = Success</li>
+<li>Confirm timestamp matches the current patching cycle</li>
+</ul>
+
+<h3>5.5 Handling Failures</h3>
+<div class="card warn"><span class="tag-label">On Snapshot Failure</span>
+Do not proceed with patching for the affected VM. Retry once. If failure persists, escalate to VMware Admin and Change Manager; remove the VM from the current cycle's target scope and document the exclusion in the CR under Section 12 (Exception Handling).
+</div>
+
+<h3>5.6 Documentation Requirements</h3>
+<ul class="chklist">
+<li>Log snapshot name, timestamp, and task ID against each VM in the evidence tracker</li>
+<li>Attach a screenshot of the Snapshot Manager for each VM (or a consolidated view for tag-grouped batches)</li>
+</ul>
+</section>
+
+<section id="s6">
+<h2>6. Azure Arc Tagging Procedure</h2>
+<p>Azure Arc tags are applied before each cycle to group in-scope VMs so that Azure Update Manager operations (assessment, scheduling, deployment) can target the entire patch group by tag query instead of manually selecting individual servers. This reduces selection errors, supports dynamic-scope Maintenance Configurations, and keeps the CR-approved scope directly traceable to what AUM actually executes against.</p>
+
+<h3>6.1 Tag Naming Convention</h3>
+<div class="codewrap"><button class="copybtn" onclick="cp(this)">Copy</button><pre>PatchGroup = &lt;SiteCode&gt;-&lt;YYYYMM&gt;</pre></div>
+
+<h3>6.2 Recommended Tag Structure</h3>
+<table>
+<tr><th>Tag Key</th><th>Purpose</th><th>Example Value</th></tr>
+<tr><td>PatchGroup</td><td>Groups VMs for the current cycle's Maintenance Configuration scope</td><td>SFAQA-202608</td></tr>
+<tr><td>PatchCycle</td><td>Identifies recurring vs. one-off inclusion</td><td>Monthly</td></tr>
+<tr><td>Site</td><td>Identifies the physical/logical site</td><td>Tabuk</td></tr>
+<tr><td>CRNumber</td><td>Links the tag directly to the approving CR</td><td>CR102345</td></tr>
+</table>
+
+<h3>6.3 Example Tags</h3>
+<div class="codewrap"><button class="copybtn" onclick="cp(this)">Copy</button><pre>PatchGroup: SFAQA-202608
+PatchCycle: Monthly
+Site: SF&amp;AQA
+CRNumber: CR102345</pre></div>
+
+<h3>6.4 Validation</h3>
+<ul class="chklist">
+<li>Query the Maintenance Configuration's dynamic scope and confirm the resolved VM count matches the CR-approved list</li>
+<li>Spot-check a sample of tagged VMs individually to confirm tag values are correct</li>
+</ul>
+
+<h3>6.5 Removing Tags After Completion</h3>
+<div class="card note"><span class="tag-label">Note</span>
+Cycle-specific tags (e.g., <code>PatchGroup</code> with a month value) should be removed or superseded after the cycle closes to prevent accidental inclusion in future dynamic-scope queries. Persistent tags (e.g., <code>Site</code>) remain.
+</div>
+</section>
+
+<section id="s7">
+<h2>7. Patch Deployment Procedure</h2>
+
+<div class="phase">
+<div class="phase-head">Phase 1 — Assessment</div>
+<div class="phase-body">
+<ol>
+<li>Trigger an on-demand Assessment in Azure Update Manager against the tagged scope (do not rely solely on the periodic auto-assessment).</li>
+<li>Review the missing updates list per VM, noting update classification (Critical, Security, Definition, etc.).</li>
+<li>Validate assessment results against expected baseline (e.g., known pending KBs from prior cycle).</li>
+</ol>
+<div class="card note"><span class="tag-label">Checkpoint</span>Do not proceed to Phase 2 until assessment has completed for 100% of the tagged scope.</div>
+</div>
+</div>
+
+<div class="phase">
+<div class="phase-head">Phase 2 — Download</div>
+<div class="phase-body">
+<ol>
+<li>Initiate update download via the scheduled Maintenance Configuration run or manual "Install now" (download step is implicit within AUM's install operation).</li>
+<li>Monitor download/prep progress per VM in the Update Manager operations blade.</li>
+<li>For failures, capture the error code and consult Section 12 (Exception Handling) before retrying.</li>
+</ol>
+</div>
+</div>
+
+<div class="phase">
+<div class="phase-head">Phase 3 — Installation</div>
+<div class="phase-body">
+<ol>
+<li>Confirm installation is scoped only to approved patch classifications defined in the CR.</li>
+<li>Monitor per-VM installation status (In Progress / Succeeded / Failed / Completed with warnings).</li>
+<li>Record installation status per VM in the evidence tracker as it completes.</li>
+</ol>
+</div>
+</div>
+
+<div class="phase">
+<div class="phase-head">Phase 4 — Reboot</div>
+<div class="phase-body">
+<ol>
+<li>Allow AUM to perform the mandatory reboot where required by installed updates (per environment rule: reboot is mandatory whenever required).</li>
+<li>Validate server availability post-reboot (ping, RDP/WinRM reachability, service state).</li>
+<li>Validate Azure Arc reconnects and returns to <code>Connected</code> status within an acceptable time (typically under 15 minutes).</li>
+</ol>
+<div class="card warn"><span class="tag-label">Watch For</span>VMs that reboot but do not reconnect to Arc within the expected window — treat as an exception per Section 12.</div>
+</div>
+</div>
+
+<div class="phase">
+<div class="phase-head">Phase 5 — Post-Reboot Assessment</div>
+<div class="phase-body">
+<ol>
+<li>Run a fresh Assessment against the same tagged scope after reboot completes.</li>
+<li>Confirm zero pending applicable updates for the approved classifications.</li>
+<li>Identify and document any VM with remaining pending updates as an exception, with root cause where known (e.g., update requiring a second reboot cycle).</li>
+</ol>
+</div>
+</div>
+</section>
+
+<section id="s8">
+<h2>8. Validation Activities</h2>
+<p>Performed per VM after Phase 5 completes, before evidence collection and CR closure.</p>
+<table>
+<tr><th>Validation Item</th><th>Expected Result</th></tr>
+<tr><td>Windows services</td><td>All previously-running critical services returned to Running state</td></tr>
+<tr><td>Azure Arc Connected</td><td>Status = Connected</td></tr>
+<tr><td>Azure Update Manager status</td><td>Last run = Succeeded, no pending applicable updates</td></tr>
+<tr><td>Event Logs</td><td>No new Critical/Error events related to patching in System/Application logs</td></tr>
+<tr><td>Critical services</td><td>Application-specific critical services confirmed with App Owner if required</td></tr>
+<tr><td>Network connectivity</td><td>VM reachable on required ports</td></tr>
+<tr><td>Domain connectivity</td><td>Domain trust intact, VM visible in AD, GPO applying correctly</td></tr>
+<tr><td>Installed KBs</td><td>Expected KBs from assessment now present in installed updates history</td></tr>
+<tr><td>Pending reboot status</td><td>No pending reboot flag remaining</td></tr>
+<tr><td>Disk space</td><td>Free space within normal operating threshold post-patch</td></tr>
+<tr><td>CPU / Memory</td><td>Utilization within normal baseline post-reboot</td></tr>
+<tr><td>VMware Tools</td><td>Running and up to date</td></tr>
+<tr><td>Application health</td><td>Application responds/starts correctly (confirmed with Application Owner where applicable)</td></tr>
+<tr><td>Monitoring agent health</td><td>Agent reporting normally; maintenance mode removed</td></tr>
+</table>
+</section>
+
+<section id="s9">
+<h2>9. Evidence Collection</h2>
+<p>Evidence must be sufficient for an auditor to independently confirm what was patched, when, on which VM, and with what result — without needing to ask a follow-up question.</p>
+<table>
+<tr><th>Evidence Item</th><th>Detail Required</th></tr>
+<tr><td>Azure Update Manager results</td><td>Per-VM update summary export/screenshot from the Update Manager run</td></tr>
+<tr><td>Assessment screenshots</td><td>Pre-patch and post-patch assessment views</td></tr>
+<tr><td>Before/After screenshots</td><td>Captured before Phase 2 and after Phase 5</td></tr>
+<tr><td>Required screenshot content</td><td>VM name, date, time, and confirmation of no pending updates must all be visible in the same screenshot</td></tr>
+<tr><td>Patch installation status</td><td>Per-VM Succeeded/Failed/Partial status log</td></tr>
+<tr><td>Reboot confirmation</td><td>Timestamp of reboot and post-reboot availability check</td></tr>
+<tr><td>Snapshot confirmation</td><td>Snapshot Manager screenshot with name/timestamp per VM</td></tr>
+<tr><td>Change record updates</td><td>CR updated with implementation notes, evidence attachments, and closure status</td></tr>
+</table>
+<div class="card note"><span class="tag-label">Retention</span>Evidence is retained per organizational audit retention policy and attached directly to the CR record.</div>
+</section>
+
+<section id="s10">
+<h2>10. Communication Procedure</h2>
+
+<h3>10.1 Start Notification (T-24h)</h3>
+<div class="codewrap"><button class="copybtn" onclick="cp(this)">Copy</button><pre>Subject: [Patching Notice] Monthly Windows Patching — &lt;Date&gt; 02:00-10:00
+
+This is to notify you that monthly Windows Server patching under CR &lt;CRNumber&gt;
+is scheduled for &lt;Date&gt;, 02:00-10:00. Affected servers: &lt;PatchGroup tag / VM list&gt;.
+Reboots are expected. Please plan accordingly.</pre></div>
+
+<h3>10.2 Patching In Progress</h3>
+<div class="codewrap"><button class="copybtn" onclick="cp(this)">Copy</button><pre>Subject: [Patching Update] In Progress — CR &lt;CRNumber&gt;
+
+Patching is currently in progress for &lt;PatchGroup&gt;. Current phase: &lt;Phase&gt;.
+No action required at this time.</pre></div>
+
+<h3>10.3 Completion Notification</h3>
+<div class="codewrap"><button class="copybtn" onclick="cp(this)">Copy</button><pre>Subject: [Patching Complete] CR &lt;CRNumber&gt;
+
+Monthly patching completed at &lt;Time&gt;. Summary: &lt;X&gt; succeeded, &lt;X&gt; failed,
+&lt;X&gt; exceptions. All validated servers are back in normal operation.</pre></div>
+
+<h3>10.4 Exception Notification</h3>
+<div class="codewrap"><button class="copybtn" onclick="cp(this)">Copy</button><pre>Subject: [Patching Exception] &lt;VMName&gt; — CR &lt;CRNumber&gt;
+
+&lt;VMName&gt; encountered an exception during patching: &lt;brief description&gt;.
+Current status: &lt;isolated / under investigation / rolled back&gt;.
+Next update by: &lt;Time&gt;.</pre></div>
+
+<h3>10.5 Failure Notification</h3>
+<div class="codewrap"><button class="copybtn" onclick="cp(this)">Copy</button><pre>Subject: [URGENT — Patching Failure] &lt;VMName&gt; — CR &lt;CRNumber&gt;
+
+&lt;VMName&gt; failed patch installation / became unreachable after reboot.
+Rollback &lt;initiated / completed&gt; at &lt;Time&gt;. Application Owner has been notified.
+Escalated to: &lt;Change Manager / Operations Manager&gt;.</pre></div>
+</section>
+
+<section id="s11">
+<h2>11. Rollback Procedure</h2>
+
+<h3>11.1 Patch Installation Failure</h3>
+<ol>
+<li>Stop further update actions on the affected VM.</li>
+<li>Review installation error/log for root cause.</li>
+<li>If not resolvable within the window, proceed to snapshot restoration (11.4).</li>
+</ol>
+
+<h3>11.2 Server Inaccessible</h3>
+<ol>
+<li>Attempt console access via vCenter to confirm VM state.</li>
+<li>If VM is unresponsive or in a boot-loop, proceed to snapshot restoration (11.4).</li>
+</ol>
+
+<h3>11.3 Application Failure</h3>
+<ol>
+<li>Engage Application Owner to confirm impact and whether rollback is required.</li>
+<li>If rollback is confirmed necessary, proceed to snapshot restoration (11.4).</li>
+</ol>
+
+<h3>11.4 Snapshot Restoration</h3>
+<ol>
+<li>Power off the VM if still running.</li>
+<li>Revert to the pre-patch snapshot identified in Section 5.</li>
+<li>Power on the VM and confirm boot to a healthy state.</li>
+</ol>
+
+<h3>11.5 Validation After Rollback</h3>
+<ul class="chklist">
+<li>Confirm VM is reachable and services are running</li>
+<li>Confirm Azure Arc reconnects</li>
+<li>Confirm application functionality with Application Owner</li>
+<li>Remove the VM from the current cycle's completed scope and log as rolled back</li>
+</ul>
+
+<h3>11.6 Stakeholder Communication</h3>
+<ul class="chklist">
+<li>Send Failure Notification (Section 10.5) immediately upon rollback decision</li>
+<li>Update the CR with rollback details, timestamp, and cause</li>
+</ul>
+</section>
+
+<section id="s12">
+<h2>12. Exception Handling</h2>
+<table>
+<tr><th>Exception</th><th>Immediate Action</th></tr>
+<tr><td>Assessment failure</td><td>Retry once; if it persists, check Arc agent health and exclude VM from cycle if unresolved</td></tr>
+<tr><td>Azure Arc offline</td><td>Attempt agent restart via console; escalate to Azure Admin; exclude VM from cycle</td></tr>
+<tr><td>VM unreachable</td><td>Check vCenter power/console state; engage VMware Admin</td></tr>
+<tr><td>Update installation failure</td><td>Capture error code; retry once; if it persists, initiate rollback (Section 11)</td></tr>
+<tr><td>Reboot failure</td><td>Attempt console-based reboot; if VM does not return, initiate rollback</td></tr>
+<tr><td>Snapshot failure</td><td>Exclude VM from cycle per Section 5.5; do not patch without a rollback point</td></tr>
+<tr><td>Backup unavailable</td><td>Escalate to Change Manager for risk acceptance decision before proceeding</td></tr>
+<tr><td>Internet connectivity issues</td><td>Verify proxy/firewall path to Microsoft Update; escalate to network team if unresolved</td></tr>
+</table>
+<p>Every exception is logged against the CR with timestamp, VM name, description, and resolution/escalation path, regardless of whether it was ultimately resolved within the window.</p>
+</section>
+
+<section id="s13">
+<h2>13. Post-Implementation Activities</h2>
+<ul class="chklist">
+<li>Remove cycle-specific tags (Section 6.5), if applicable</li>
+<li>Verify monitoring agents removed from maintenance mode and reporting normally</li>
+<li>Verify Backup Team has resumed standard backup schedules</li>
+<li>Update the Change Request with final implementation notes and outcomes</li>
+<li>Attach all evidence collected in Section 9</li>
+<li>Close the implementation record / move CR to Review or Closed status per ITSM workflow</li>
+<li>Document lessons learned for the cycle (recurring failures, timing issues, scope gaps)</li>
+</ul>
+</section>
+
+<section id="s14">
+<h2>14. Reporting</h2>
+<p>A summary report is produced at the close of every cycle using the template below.</p>
+<table>
+<tr><th>Metric</th><th>Value</th></tr>
+<tr><td>Total VMs in scope</td><td>&nbsp;</td></tr>
+<tr><td>Successful</td><td>&nbsp;</td></tr>
+<tr><td>Failed</td><td>&nbsp;</td></tr>
+<tr><td>Partial success</td><td>&nbsp;</td></tr>
+<tr><td>Rebooted</td><td>&nbsp;</td></tr>
+<tr><td>Not rebooted</td><td>&nbsp;</td></tr>
+<tr><td>Pending updates remaining</td><td>&nbsp;</td></tr>
+<tr><td>Exceptions logged</td><td>&nbsp;</td></tr>
+<tr><td>Rollbacks performed</td><td>&nbsp;</td></tr>
+</table>
+<h3>14.1 Duration Per Phase</h3>
+<table>
+<tr><th>Phase</th><th>Start</th><th>End</th><th>Duration</th></tr>
+<tr><td>Pre-Implementation</td><td></td><td></td><td></td></tr>
+<tr><td>Snapshot</td><td></td><td></td><td></td></tr>
+<tr><td>Assessment</td><td></td><td></td><td></td></tr>
+<tr><td>Download</td><td></td><td></td><td></td></tr>
+<tr><td>Installation</td><td></td><td></td><td></td></tr>
+<tr><td>Reboot</td><td></td><td></td><td></td></tr>
+<tr><td>Post-Reboot Assessment</td><td></td><td></td><td></td></tr>
+<tr><td><b>Overall Maintenance Duration</b></td><td></td><td></td><td></td></tr>
+</table>
+</section>
+
+<section id="s15">
+<h2>15. Checklists</h2>
+
+<details class="chk"><summary>Pre-Patching Checklist</summary><div class="body"><ul class="chklist">
+<li>CR approved and scope confirmed</li>
+<li>Stakeholders notified (T-24h)</li>
+<li>Backup schedule adjustment confirmed</li>
+<li>Recent successful backup verified per VM</li>
+<li>Azure Arc connectivity verified</li>
+<li>AUM readiness verified</li>
+<li>Engineer permissions verified</li>
+</ul></div></details>
+
+<details class="chk"><summary>Snapshot Checklist</summary><div class="body"><ul class="chklist">
+<li>Naming convention applied</li>
+<li>Description format applied</li>
+<li>Snapshot task status = Success</li>
+<li>Snapshot visible in Snapshot Manager</li>
+<li>Evidence logged/screenshotted</li>
+</ul></div></details>
+
+<details class="chk"><summary>Backup Verification Checklist</summary><div class="body"><ul class="chklist">
+<li>Backup Team confirmation received</li>
+<li>Latest successful backup timestamp confirmed per VM</li>
+<li>Any VM without recent backup escalated</li>
+</ul></div></details>
+
+<details class="chk"><summary>Azure Arc Checklist</summary><div class="body"><ul class="chklist">
+<li>All target VMs Connected</li>
+<li>Tags applied and validated</li>
+<li>Dynamic scope resolves expected count</li>
+</ul></div></details>
+
+<details class="chk"><summary>Azure Update Manager Checklist</summary><div class="body"><ul class="chklist">
+<li>Maintenance Configuration schedule confirmed</li>
+<li>Patch classifications match CR approval</li>
+<li>Reboot setting confirmed (mandatory when required)</li>
+</ul></div></details>
+
+<details class="chk"><summary>Deployment Checklist</summary><div class="body"><ul class="chklist">
+<li>Assessment completed for 100% of scope</li>
+<li>Installation monitored and status recorded per VM</li>
+<li>Reboots confirmed and Arc reconnect verified</li>
+<li>Post-reboot assessment shows zero pending updates</li>
+</ul></div></details>
+
+<details class="chk"><summary>Validation Checklist</summary><div class="body"><ul class="chklist">
+<li>All items in Section 8 confirmed per VM</li>
+<li>Any deviation logged as an exception</li>
+</ul></div></details>
+
+<details class="chk"><summary>Evidence Collection Checklist</summary><div class="body"><ul class="chklist">
+<li>All items in Section 9 collected per VM</li>
+<li>Evidence attached to CR</li>
+</ul></div></details>
+
+<details class="chk"><summary>Change Closure Checklist</summary><div class="body"><ul class="chklist">
+<li>Tags removed (if applicable)</li>
+<li>Monitoring restored</li>
+<li>Backups resumed</li>
+<li>CR updated and closed</li>
+<li>Report published</li>
+</ul></div></details>
+</section>
+
+<section id="s16">
+<h2>16. Best Practices</h2>
+<table>
+<tr><th>Area</th><th>Best Practice</th></tr>
+<tr><td>Maintenance windows</td><td>Keep windows consistent month-to-month to build predictable stakeholder expectations and simplify backup coordination.</td></tr>
+<tr><td>Tagging strategy</td><td>Use cycle-scoped tags (with date/CR embedded) rather than permanent static groups, to prevent scope drift between cycles.</td></tr>
+<tr><td>Snapshot management</td><td>Avoid retaining pre-patch snapshots longer than necessary; long-lived snapshots degrade VM performance and consume datastore capacity.</td></tr>
+<tr><td>Backup coordination</td><td>Confirm backup adjustment in writing before every cycle — never assume the prior month's arrangement still applies.</td></tr>
+<tr><td>Validation methodology</td><td>Validate against a defined baseline (previous month's healthy state) rather than judgment alone.</td></tr>
+<tr><td>Documentation</td><td>Log evidence as each phase completes rather than reconstructing it after the window closes.</td></tr>
+<tr><td>Audit readiness</td><td>Every screenshot must independently show VM name, date, and time — assume no other context will be available to the reviewer.</td></tr>
+<tr><td>Security considerations</td><td>Restrict snapshot and AUM operation permissions to the implementation engineer role; review access quarterly.</td></tr>
+<tr><td>Performance considerations</td><td>Stagger reboots across the four-engineer workload to avoid simultaneous domain controller or shared-service impact.</td></tr>
+<tr><td>Risk mitigation</td><td>Never skip the snapshot step to save time, even under schedule pressure — it is the sole rollback mechanism defined in this SOP.</td></tr>
+</table>
+</section>
+
+<hr class="sep">
+<p class="small">End of document. This SOP/Runbook should be reviewed and re-approved at least annually or upon material change to the patching platform, tooling, or environment.</p>
+</main>
+</div>
+<script>
+function cp(btn){
+  const pre = btn.nextElementSibling;
+  navigator.clipboard.writeText(pre.innerText).then(()=>{
+    const orig = btn.innerText;
+    btn.innerText = "Copied";
+    setTimeout(()=>btn.innerText = orig, 1200);
+  });
+}
+</script>
+</body>
+</html>
