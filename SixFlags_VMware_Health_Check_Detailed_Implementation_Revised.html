@@ -1,0 +1,107 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>SixFlags VMware Health Check Detailed Implementation - Revised</title><style>
+:root{--nav:#073763;--blue:#0b5cab;--cyan:#00a3e0;--green:#178746;--amber:#f4b183;--red:#c00000;--bg:#eef3f8;--ink:#1f2937;--purple:#6f42c1;--soft:#f8fbfe}
+*{box-sizing:border-box}body{margin:0;font-family:Segoe UI,Arial,sans-serif;background:var(--bg);color:var(--ink)}header{background:linear-gradient(120deg,var(--nav),var(--blue),var(--cyan));color:white;padding:30px 38px;box-shadow:0 3px 15px rgba(0,0,0,.22)}header h1{margin:0;font-size:31px}header p{margin:8px 0 0 0;opacity:.95}.wrap{max-width:1500px;margin:auto;padding:22px}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.card{background:white;border-radius:15px;padding:18px;box-shadow:0 2px 9px rgba(0,0,0,.10);border-top:6px solid var(--blue)}.ok{border-top-color:var(--green)}.warn{border-top-color:#d97706}.crit{border-top-color:var(--red)}.info{border-top-color:var(--cyan)}.purple{border-top-color:var(--purple)}.metric{font-size:31px;font-weight:800}details{background:#fff;margin:14px 0;border-radius:13px;box-shadow:0 2px 8px rgba(0,0,0,.09);overflow:hidden}summary{cursor:pointer;font-weight:800;color:#003b71;padding:16px 18px;font-size:17px;background:white;border-left:7px solid var(--blue)}details[open] summary{background:#eef8ff}.content{padding:18px}.badge{display:inline-block;border-radius:999px;padding:4px 10px;font-weight:800;font-size:12px;color:white}.b-green{background:var(--green)}.b-amber{background:#d97706}.b-red{background:var(--red)}.b-blue{background:var(--blue)}.b-purple{background:var(--purple)}table{width:100%;border-collapse:collapse;background:white;margin:10px 0 18px 0}th{background:#0b3d70;color:white;text-align:left;padding:10px;font-size:13px}td{border:1px solid #d8e1ea;padding:9px;vertical-align:top;font-size:13px}tr:nth-child(even) td{background:var(--soft)}.code{background:#111827;color:#e5e7eb;border-radius:10px;padding:14px;white-space:pre-wrap;font-family:Consolas,monospace;font-size:13px;overflow:auto}.callout{border-left:6px solid var(--cyan);background:#effaff;padding:12px;border-radius:8px;margin:12px 0}.future{border-left-color:var(--purple);background:#f7f1ff}.success{border-left-color:var(--green);background:#f1fff5}.footer{text-align:center;color:#546;opacity:.85;font-size:12px;margin:25px 0}.note{color:#445;font-size:13px}@media(max-width:950px){.grid,.grid3{grid-template-columns:1fr}}
+</style></head><body><header><h1>SixFlags VMware Health Check Detailed Implementation - Revised</h1><p>Technical implementation guide for Phase 1 SixFlags vCenter only.</p></header><div class="wrap">
+<div class="grid"><div class="card ok"><div class="metric">1</div><b>vCenter</b><p>Only SixFlags vCenter is enabled in Phase 1.</p></div><div class="card info"><div class="metric">Dynamic</div><b>Inventory</b><p>Clusters, hosts, datastores and VMs are discovered dynamically.</p></div><div class="card warn"><div class="metric">PowerCLI</div><b>Core</b><p>Uses VMware PowerCLI for vSphere data collection.</p></div><div class="card purple"><div class="metric">Input</div><b>Physical Workbook</b><p>Physical inspection can be imported or referenced as evidence.</p></div></div>
+<details open><summary>1. Implementation Objective</summary><div class="content"><p>Build the PowerShell and PowerCLI framework first for the SixFlags vCenter only. The implementation must automate vSphere health, capacity, compliance, alarms, inventory, certificates, licenses, version drift and report generation. It must not hardcode clusters, hosts, datastores or VMs.</p></div></details>
+<details><summary>2. Phase 1 Folder Structure</summary><div class="content"><div class="code">C:\VMwareHealthCheck├── Config
+│   ├── HealthCheckConfig.json
+│   ├── Thresholds.json
+│   └── VCenters.csv
+├── Credentials
+│   └── vcenter-creds.xml
+├── Input
+│   └── PhysicalInspection.xlsx
+├── Modules
+│   ├── VMwareHealth.Core.psm1
+│   ├── VMwareHealth.Collection.psm1
+│   ├── VMwareHealth.Evaluation.psm1
+│   ├── VMwareHealth.Reporting.psm1
+│   └── VMwareHealth.Physical.psm1
+├── Reports
+│   ├── HTML
+│   ├── Excel
+│   ├── PDF
+│   └── History
+├── Logs
+└── Run-VMwareHealthCheck.ps1</div></div></details>
+<details><summary>3. SixFlags Only VCenters.csv</summary><div class="content"><p>Use only one enabled vCenter row during Phase 1.</p><div class="code">Name,Server,Site,Environment,Enabled
+SixFlags-vCenter,vcsa-sixflags.domain.local,SIXFLAGS,Production,True</div><p class="note">Replace <b>vcsa-sixflags.domain.local</b> with the real SixFlags vCenter FQDN or IP.</p></div></details>
+<details><summary>4. Configuration File</summary><div class="content"><div class="code">{
+  "General": {
+    "ReportRoot": "C:\VMwareHealthCheck\Reports",
+    "LogRoot": "C:\VMwareHealthCheck\Logs",
+    "CredentialPath": "C:\VMwareHealthCheck\Credentials\vcenter-creds.xml",
+    "VCentersCsv": "C:\VMwareHealthCheck\Config\VCenters.csv",
+    "ThresholdsPath": "C:\VMwareHealthCheck\Config\Thresholds.json",
+    "PhysicalInspectionPath": "C:\VMwareHealthCheck\Input\PhysicalInspection.xlsx"
+  },
+  "Pdf": {
+    "Enabled": true,
+    "PdfEngine": "MicrosoftEdge"
+  },
+  "Reporting": {
+    "CompanyName": "Infrastructure Operations",
+    "ReportTitle": "SixFlags Weekly VMware Health Check Report",
+    "KeepReportsDays": 90
+  }
+}</div></div></details>
+<details><summary>5. Thresholds.json</summary><div class="content"><div class="code">{
+  "Capacity": {
+    "DatastoreWarningPercent": 75,
+    "DatastoreCriticalPercent": 90,
+    "CpuWarningPercent": 75,
+    "CpuCriticalPercent": 90,
+    "MemoryWarningPercent": 75,
+    "MemoryCriticalPercent": 90,
+    "SnapshotWarningDays": 3,
+    "SnapshotCriticalDays": 7
+  },
+  "Certificates": {
+    "WarningDays": 60,
+    "CriticalDays": 30
+  },
+  "Security": {
+    "RequireNtpConfigured": true,
+    "RequireShellDisabled": true,
+    "RequireSshDisabled": true,
+    "RequireSyslogConfigured": true
+  },
+  "VersionCompliance": {
+    "ExpectedMajorVersion": "8.0",
+    "AllowMixedBuilds": false
+  }
+}</div></div></details>
+<details><summary>6. Corrected Implementation Mapping</summary><div class="content"><p>This is the corrected mapping for the implementation. It reflects the automation objective, not just PowerCLI limitations.</p><table><tr><th>Check Area</th><th>Implementation Status</th><th>Implementation Method</th></tr><tr><td>Hostname</td><td>Automated for ESXi hosts</td><td>PowerCLI discovers ESXi host names from vCenter. SixFlags Phase 1 report should list all discovered ESXi hosts from the SixFlags vCenter.</td></tr><tr><td>IP Address</td><td>Automated for ESXi hosts</td><td>Collect from VMkernel management adapter where available. If multiple management VMkernel adapters exist, report all management IPs.</td></tr><tr><td>Model / Serial</td><td>Automated for ESXi hosts</td><td>Collect manufacturer, model and serial from ESXi host hardware views where exposed by vendor hardware.</td></tr><tr><td>Software Version</td><td>Automated</td><td>Collect ESXi version and build, then compare against the approved vSphere 8.x baseline.</td></tr><tr><td>Power Supply 1/2 Status</td><td>Mostly automated</td><td>Collect via vCenter hardware sensors and triggered alarms. Physical verification only if sensors are missing or conflicting.</td></tr><tr><td>Disk Status</td><td>Mostly automated</td><td>Collect via vCenter hardware/storage sensors and alarms. Physical inspection remains only for LED/bay confirmation or sensor gaps.</td></tr><tr><td>Network Status</td><td>Automated</td><td>Collect physical NIC link state, vSwitch/vDS information, uplinks and alarms. Physical cable tracing remains manual.</td></tr><tr><td>LED Status</td><td>Partially automated</td><td>vCenter alarms can indicate hardware issue, but actual LED color is a visual confirmation item.</td></tr><tr><td>Fan Status</td><td>Mostly automated</td><td>Collect fan sensor health when exposed by host hardware sensors. Fan noise remains manual.</td></tr><tr><td>Temperature Status</td><td>Mostly automated</td><td>Collect temperature sensors where available. Room/environmental temperature remains physical/BMS.</td></tr><tr><td>vCenter Health</td><td>Automated</td><td>Connectivity, version, build, certificates, services where available, license details where permission allows.</td></tr><tr><td>Cluster Health / HA / DRS</td><td>Automated</td><td>Collect HA and DRS status dynamically for all clusters discovered in SixFlags vCenter.</td></tr><tr><td>vSAN Health</td><td>Automated where vSAN is enabled</td><td>Collect vSAN enablement and health details where vSAN APIs are available.</td></tr><tr><td>Datastore Capacity</td><td>Automated</td><td>Collect capacity, used, free and utilization percentage for all datastores.</td></tr><tr><td>CPU / Memory Capacity</td><td>Automated</td><td>Collect host and cluster CPU/memory usage and thresholds.</td></tr><tr><td>VM Inventory / Snapshots</td><td>Automated</td><td>Collect VM counts, power states, snapshots and snapshot age.</td></tr><tr><td>Open Alarms</td><td>Automated</td><td>Collect triggered vCenter alarms and classify red/yellow alarms.</td></tr><tr><td>Security Compliance</td><td>Automated</td><td>Check NTP, SSH, ESXi Shell, lockdown mode and syslog where available.</td></tr><tr><td>Configuration Drift</td><td>Automated</td><td>Compare version/build, NTP, DNS, syslog, SSH/Shell and other baseline settings across hosts.</td></tr><tr><td>HTML / Excel / PDF Report</td><td>Automated</td><td>Generate management and technical reports without manual formatting.</td></tr><tr><td>Historical Trend</td><td>Automated after second run</td><td>Export weekly history data and compare current week to prior runs.</td></tr><tr><td>Device Labeling</td><td>Manual</td><td>Requires visual inspection.</td></tr><tr><td>Cable Labeling</td><td>Manual</td><td>Requires visual inspection.</td></tr><tr><td>Cable Management</td><td>Manual</td><td>Requires physical inspection.</td></tr><tr><td>Cleanliness</td><td>Manual</td><td>Requires physical inspection.</td></tr><tr><td>Physical Condition</td><td>Manual</td><td>Requires physical inspection.</td></tr><tr><td>Fan Noise</td><td>Manual</td><td>Requires human hearing/physical walkthrough.</td></tr><tr><td>Rack / U Position Verification</td><td>Manual or CMDB import</td><td>Can be imported from a CMDB/static file, but physical confirmation remains visual.</td></tr><tr><td>Humidity / Room Cooling</td><td>Manual or BMS integration</td><td>Not native to PowerCLI. Can be automated only if BMS/environmental system integration is added later.</td></tr><tr><td>PDU1/PDU2 Status</td><td>Manual or future PDU integration</td><td>Not native to PowerCLI. Can be automated later using PDU APIs if available.</td></tr><tr><td>iLO/iDRAC Connectivity</td><td>Future vendor integration</td><td>Not required for Phase 1 PowerCLI-only scope. Can be automated later using vendor APIs.</td></tr><tr><td>Remarks</td><td>Manual / imported</td><td>Site engineer comments remain manual, but can be imported into the report.</td></tr></table></div></details>
+<details><summary>7. Collection Modules</summary><div class="content"><table><tr><th>Module</th><th>Purpose</th><th>Phase 1 SixFlags Requirement</th></tr><tr><td>VMwareHealth.Core.psm1</td><td>Config, logging, retry, common findings objects.</td><td>Required.</td></tr><tr><td>VMwareHealth.Collection.psm1</td><td>vCenter, cluster, host, datastore, VM, alarm, certificate, license and hardware sensor collection.</td><td>Required.</td></tr><tr><td>VMwareHealth.Evaluation.psm1</td><td>Severity classification and drift detection.</td><td>Required.</td></tr><tr><td>VMwareHealth.Reporting.psm1</td><td>HTML, Excel, optional PDF and history output.</td><td>Required.</td></tr><tr><td>VMwareHealth.Physical.psm1</td><td>Optional import of physical inspection workbook.</td><td>Recommended, but can start as manual attachment/reference.</td></tr></table></div></details>
+<details><summary>8. Main Script Flow</summary><div class="content"><div class="code">Load Config\HealthCheckConfig.json
+Load Config\Thresholds.json
+Import VMware PowerCLI
+Import framework modules
+Load Credentialscenter-creds.xml
+Import Config\VCenters.csv
+Filter Enabled = True
+Validate only SixFlags is enabled for Phase 1
+Connect to SixFlags vCenter with retry
+Discover datacenters, clusters, hosts, datastores and VMs dynamically
+Collect vCenter version, build, certificate, license and services where available
+Collect cluster HA, DRS and vSAN data
+Collect ESXi version/build, hardware sensors, CPU, memory, network and security data
+Collect datastores, VM inventory, snapshots and open alarms
+Evaluate severity and configuration drift
+Import physical inspection workbook if present
+Generate interactive HTML report
+Generate Excel workbook
+Generate optional PDF
+Export history CSV
+Write final report paths to screen and log</div></div></details>
+<details><summary>9. Validation Acceptance Criteria</summary><div class="content"><table><tr><th>Validation</th><th>Pass Criteria</th></tr><tr><td>Single vCenter scope</td><td>Only SixFlags is enabled and processed.</td></tr><tr><td>No hardcoded inventory</td><td>Hosts, clusters, datastores and VMs are discovered from vCenter.</td></tr><tr><td>Automation mapping corrected</td><td>VMware/vSphere checks show Automated or Mostly Automated, while only physical visual checks show Manual.</td></tr><tr><td>Hardware health</td><td>Power, disk, fan and temperature sensor data appears where vCenter exposes it.</td></tr><tr><td>Physical inspection</td><td>Manual-only findings remain clearly separated.</td></tr><tr><td>Report output</td><td>HTML and Excel are generated with SixFlags scope. PDF is optional.</td></tr></table></div></details>
+<details><summary>10. Future Expansion</summary><div class="content"><p>After SixFlags is validated, add other sites by changing only the configuration file.</p><div class="code">Name,Server,Site,Environment,Enabled
+SixFlags-vCenter,vcsa-sixflags.domain.local,SIXFLAGS,Production,True
+AMC-AJW-vCenter,vcsa-amc-ajw.domain.local,AMC-AJW,Production,True
+AMC-PAN-vCenter,vcsa-amc-pan.domain.local,AMC-PAN,Production,True
+AMC-RGL-vCenter,vcsa-amc-rgl.domain.local,AMC-RGL,Production,True
+AMC-STR-vCenter,vcsa-amc-str.domain.local,AMC-STR,Production,True</div></div></details>
+<details><summary>11. Explicitly Excluded from Phase 1</summary><div class="content"><div class="callout future"><ul><li>Windows Task Scheduler.</li><li>Dedicated service account.</li><li>Automatic email notification.</li><li>Automatic ServiceNow ticket creation.</li><li>Direct vendor API integration for iLO/iDRAC/PDU/BMS.</li></ul></div></div></details>
+<div class="footer">Revised Detailed Implementation. Phase 1 scope: SixFlags vCenter only. Automation mapping corrected.</div>
+</div></body></html>
