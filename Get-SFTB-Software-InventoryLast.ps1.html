@@ -1,0 +1,356 @@
+#Requires -Version 5.1
+<#
+.SYNOPSIS
+   Compares installed software/agents between SF and TB VMs using PowerCLI
+   Invoke-VMScript (VMware Tools) only. No WinRM, no SSH.
+.DESCRIPTION
+   Assumes you are already connected to both vCenters (Connect-VIServer).
+   Reads VM names from two plain text files (one per OS family). For each
+   name, the script checks which vCenter (SF or TB) actually owns that VM
+   and classifies it automatically - you do not tag names by site yourself.
+   Inventory is collected entirely through Invoke-VMScript over VMware
+   Tools, so no WinRM/PSRemoting and no SSH session is ever opened.
+   Output: CSV files always, an Excel workbook if the ImportExcel module
+   is available, an error log, and a console summary of processed /
+   succeeded / failed VMs.
+.PARAMETER SFvCenterServer
+   Name or IP of the already-connected SF vCenter (must match
+   $global:DefaultVIServers).
+.PARAMETER TBvCenterServer
+   Name or IP of the already-connected TB vCenter.
+.PARAMETER WindowsVMListFile
+   Path to a text file with one Windows VM name per line. Lines starting
+   with # are ignored.
+.PARAMETER LinuxVMListFile
+   Path to a text file with one Linux VM name per line. Lines starting
+   with # are ignored.
+.PARAMETER WindowsGuestCredential
+   Credential used for Invoke-VMScript against every Windows VM (SF and TB).
+.PARAMETER SFLinuxGuestCredential
+   Credential used for Invoke-VMScript against SF Linux VMs. Falls back to
+   -LinuxGuestCredential if not supplied.
+.PARAMETER TBLinuxGuestCredential
+   Credential used for Invoke-VMScript against TB Linux VMs. Falls back to
+   -LinuxGuestCredential if not supplied.
+.EXAMPLE
+   $winCred   = Get-Credential -Message "Windows guest admin"
+   $sfLinCred = Get-Credential -Message "SF Linux guest admin"
+   $tbLinCred = Get-Credential -Message "TB Linux guest admin"
+   .\Get-SFTB-Software-Inventory.ps1 `
+       -SFvCenterServer 10.50.10.10 -TBvCenterServer 10.52.6.140 `
+       -WindowsVMListFile .\winvmslist.txt -LinuxVMListFile .\linuxvmslist.txt `
+       -WindowsGuestCredential $winCred `
+       -SFLinuxGuestCredential $sfLinCred -TBLinuxGuestCredential $tbLinCred
+.NOTES
+   If you ever see "X is not recognized" for a function defined earlier in
+   this file, run this against the file on disk before anything else - it
+   will point straight at the real syntax error instead of guessing:
+       $errs = $null
+       [System.Management.Automation.Language.Parser]::ParseFile(
+           (Resolve-Path .\Get-SFTB-Software-Inventory.ps1), [ref]$null, [ref]$errs
+       ) | Out-Null
+       $errs
+#>
+[CmdletBinding()]
+param(
+   [Parameter(Mandatory = $true)][string]$SFvCenterServer,
+   [Parameter(Mandatory = $true)][string]$TBvCenterServer,
+   [Parameter(Mandatory = $true)][string]$WindowsVMListFile,
+   [Parameter(Mandatory = $true)][string]$LinuxVMListFile,
+   [Parameter(Mandatory = $false)][System.Management.Automation.PSCredential]$WindowsGuestCredential,
+   [Parameter(Mandatory = $false)][System.Management.Automation.PSCredential]$LinuxGuestCredential,
+   [Parameter(Mandatory = $false)][System.Management.Automation.PSCredential]$SFLinuxGuestCredential,
+   [Parameter(Mandatory = $false)][System.Management.Automation.PSCredential]$TBLinuxGuestCredential,
+   [Parameter(Mandatory = $false)]
+   [string]$OutputPath = (Join-Path (Get-Location) "SFTB-SoftwareInventory-$(Get-Date -Format 'yyyyMMdd-HHmmss')")
+)
+# ------------------------------------------------------------------------
+# INITIALIZATION
+# ------------------------------------------------------------------------
+$ErrorActionPreference = 'Stop'
+$StartTime = Get-Date
+$null    = New-Item -Path $OutputPath -ItemType Directory -Force
+$CsvPath = Join-Path $OutputPath 'CSV'
+$null    = New-Item -Path $CsvPath -ItemType Directory -Force
+$LogFile   = Join-Path $OutputPath 'SFTB-SoftwareInventory.log'
+$ExcelFile = Join-Path $OutputPath 'SFTB-SoftwareInventory.xlsx'
+$ErrorLog = [System.Collections.Generic.List[PSObject]]::new()
+function Write-Log {
+   param([string]$Message, [ValidateSet('INFO', 'WARN', 'ERROR', 'SUCCESS')][string]$Level = 'INFO')
+   $line = "[{0}] [{1}] {2}" -f (Get-Date -Format 'yyyy-MM-dd HH:mm:ss'), $Level, $Message
+   $line | Out-File -FilePath $LogFile -Append -Encoding utf8
+   $color = switch ($Level) { 'WARN' {'Yellow'} 'ERROR' {'Red'} 'SUCCESS' {'Green'} default {'Gray'} }
+   Write-Host $line -ForegroundColor $color
+}
+function Write-Failure {
+   param([string]$Stage, [string]$ObjectName, [string]$Reason)
+   $ErrorLog.Add([PSCustomObject]@{
+       Timestamp = Get-Date -Format 'yyyy-MM-dd HH:mm:ss'
+       Stage     = $Stage
+       Object    = $ObjectName
+       Reason    = $Reason
+   })
+   Write-Log -Level ERROR -Message "[$Stage] $ObjectName -> $Reason"
+}
+Write-Log -Level INFO -Message "===== SF vs TB Software/Agent Inventory started ====="
+$SFvCenter = $global:DefaultVIServers | Where-Object { $_.Name -eq $SFvCenterServer -and $_.IsConnected }
+$TBvCenter = $global:DefaultVIServers | Where-Object { $_.Name -eq $TBvCenterServer -and $_.IsConnected }
+if (-not $SFvCenter) { throw "Not connected to SF vCenter '$SFvCenterServer'. Run Connect-VIServer first." }
+if (-not $TBvCenter) { throw "Not connected to TB vCenter '$TBvCenterServer'. Run Connect-VIServer first." }
+Write-Log -Level SUCCESS -Message "Confirmed connections: SF=$($SFvCenter.Name)  TB=$($TBvCenter.Name)"
+$UseExcel = [bool](Get-Module -ListAvailable -Name ImportExcel)
+if ($UseExcel) { Import-Module ImportExcel -ErrorAction SilentlyContinue }
+else { Write-Log -Level WARN -Message "ImportExcel module not found - CSV output only. Install-Module ImportExcel to enable .xlsx output." }
+# ------------------------------------------------------------------------
+# HELPERS
+# ------------------------------------------------------------------------
+function Import-VMListFile {
+   param([Parameter(Mandatory)][string]$Path)
+   if (-not (Test-Path -LiteralPath $Path)) {
+       Write-Failure -Stage 'VM List File' -ObjectName $Path -Reason 'File not found.'
+       return @()
+   }
+   Get-Content -LiteralPath $Path |
+       ForEach-Object { $_.Trim() } |
+       Where-Object { $_ -and $_ -notmatch '^\s*#' }
+}
+function Resolve-VMTarget {
+   # Determines whether a VM name belongs to SF or TB. Returns $null (and
+   # logs) if the name is not found on either vCenter.
+   param([Parameter(Mandatory)][string]$Name)
+   $vm = Get-VM -Server $SFvCenter -Name $Name -ErrorAction SilentlyContinue
+   if ($vm) { return [PSCustomObject]@{ Name = $Name; Site = 'SF'; Server = $SFvCenter; VM = $vm } }
+   $vm = Get-VM -Server $TBvCenter -Name $Name -ErrorAction SilentlyContinue
+   if ($vm) { return [PSCustomObject]@{ Name = $Name; Site = 'TB'; Server = $TBvCenter; VM = $vm } }
+   Write-Failure -Stage 'VM Resolve' -ObjectName $Name -Reason 'Not found on either SF or TB vCenter.'
+   return $null
+}
+function Invoke-GuestScriptSafe {
+   param(
+       [Parameter(Mandatory)]$VM,
+       [Parameter(Mandatory)][string]$ScriptText,
+       [Parameter(Mandatory)][ValidateSet('Powershell', 'Bash')][string]$ScriptType,
+       [Parameter(Mandatory)][System.Management.Automation.PSCredential]$Credential
+   )
+   $result = Invoke-VMScript -VM $VM -ScriptText $ScriptText -ScriptType $ScriptType -GuestCredential $Credential -ErrorAction Stop
+   return $result.ScriptOutput
+}
+$AgentKeywords = [ordered]@{
+   'Defender'                 = 'AV/EDR'
+   'CrowdStrike'               = 'AV/EDR'
+   'SentinelOne'               = 'AV/EDR'
+   'Symantec'                  = 'AV/EDR'
+   'McAfee'                    = 'AV/EDR'
+   'Trend Micro'               = 'AV/EDR'
+   'Qualys'                    = 'Vulnerability/Monitoring'
+   'Splunk'                    = 'Monitoring'
+   'Binalyze'                  = 'DFIR'
+   'SCOM'                      = 'Monitoring'
+   'Nagios'                    = 'Monitoring'
+   'Zabbix'                    = 'Monitoring'
+   'Veeam'                     = 'Backup'
+   'Commvault'                 = 'Backup'
+   'Azure Connected Machine'   = 'Azure Arc'
+   'ManageEngine'              = 'Endpoint Management'
+   'BeyondTrust'               = 'PAM'
+   'VMware Tools'              = 'VMware Tools'
+}
+function Get-AgentCategory {
+   param([string]$Name)
+   if (-not $Name) { return $null }
+   foreach ($kw in $AgentKeywords.Keys) {
+       if ($Name -match [regex]::Escape($kw)) { return $AgentKeywords[$kw] }
+   }
+   return $null
+}
+# ------------------------------------------------------------------------
+# INVENTORY COLLECTION
+# ------------------------------------------------------------------------
+function Get-WindowsGuestSoftware {
+   param([Parameter(Mandatory)]$VM, [Parameter(Mandatory)][System.Management.Automation.PSCredential]$Credential, [Parameter(Mandatory)][string]$Site)
+   $psScript = @'
+$paths = @(
+   "HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\*",
+   "HKLM:\Software\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*"
+)
+$sw = Get-ItemProperty $paths -ErrorAction SilentlyContinue |
+   Where-Object { $_.DisplayName } |
+   Select-Object DisplayName, DisplayVersion, Publisher |
+   Sort-Object DisplayName -Unique
+$tools  = (Get-CimInstance Win32_Product -ErrorAction SilentlyContinue |
+   Where-Object { $_.Name -eq "VMware Tools" } | Select-Object -ExpandProperty Version -First 1)
+$kernel = (Get-CimInstance Win32_OperatingSystem).Version
+[PSCustomObject]@{ Software = $sw; ToolsVersion = $tools; OSVersion = $kernel } | ConvertTo-Json -Depth 4 -Compress
+'@
+   $raw = Invoke-GuestScriptSafe -VM $VM -ScriptText $psScript -ScriptType Powershell -Credential $Credential
+   if (-not $raw) { throw "Empty result from guest script." }
+   $parsed = $raw | ConvertFrom-Json
+   $swList = @($parsed.Software)
+   $agents = $swList | Where-Object { Get-AgentCategory $_.DisplayName } | ForEach-Object {
+       [PSCustomObject]@{ VMName = $VM.Name; Site = $Site; Agent = $_.DisplayName; Version = $_.DisplayVersion; Category = Get-AgentCategory $_.DisplayName }
+   }
+   [PSCustomObject]@{
+       VMName       = $VM.Name; Site = $Site; OSFamily = 'Windows'
+       ToolsVersion = $parsed.ToolsVersion; OSVersion = $parsed.OSVersion
+       SoftwareList = $swList; AgentsFound = $agents
+   }
+}
+function Get-LinuxGuestSoftware {
+   param([Parameter(Mandatory)]$VM, [Parameter(Mandatory)][System.Management.Automation.PSCredential]$Credential, [Parameter(Mandatory)][string]$Site)
+   $bashScript = @'
+KERNEL=$(uname -r)
+if command -v vmware-toolbox-cmd >/dev/null 2>&1; then
+   TOOLS=$(vmware-toolbox-cmd -v 2>/dev/null)
+elif command -v dpkg-query >/dev/null 2>&1; then
+   TOOLS=$(dpkg-query -W -f='${Version}' open-vm-tools 2>/dev/null)
+elif command -v rpm >/dev/null 2>&1; then
+   TOOLS=$(rpm -q --qf '%{VERSION}' open-vm-tools 2>/dev/null)
+else
+   TOOLS=""
+fi
+if command -v dpkg-query >/dev/null 2>&1; then
+   PKGS=$(dpkg-query -W -f='${Package}|${Version}\n' 2>/dev/null)
+elif command -v rpm >/dev/null 2>&1; then
+   PKGS=$(rpm -qa --qf '%{NAME}|%{VERSION}\n' 2>/dev/null)
+else
+   PKGS=""
+fi
+echo "KERNEL_START"
+echo "$KERNEL"
+echo "TOOLS_START"
+echo "$TOOLS"
+echo "PKGS_START"
+echo "$PKGS"
+'@
+   $raw = Invoke-GuestScriptSafe -VM $VM -ScriptText $bashScript -ScriptType Bash -Credential $Credential
+   if (-not $raw) { throw "Empty result from guest script." }
+   $lines     = (($raw -replace "`r", '') -split "`n") | ForEach-Object { $_.Trim() }
+   $kernelIdx = [array]::IndexOf($lines, 'KERNEL_START')
+   $toolsIdx  = [array]::IndexOf($lines, 'TOOLS_START')
+   $pkgsIdx   = [array]::IndexOf($lines, 'PKGS_START')
+   if ($kernelIdx -lt 0 -or $toolsIdx -lt 0 -or $pkgsIdx -lt 0) {
+       $preview = $raw.Substring(0, [Math]::Min(500, $raw.Length)) -replace "`r`n|`r|`n", ' | '
+       throw "Unexpected guest script output format. Raw output was: [$preview]"
+   }
+   $kernel  = $lines[$kernelIdx + 1]
+   $tools   = $lines[$toolsIdx + 1]
+   $pkgList = $lines[($pkgsIdx + 1)..($lines.Count - 1)] |
+       Where-Object { $_ -match '\|' } |
+       ForEach-Object {
+           $parts = $_ -split '\|', 2
+           [PSCustomObject]@{ DisplayName = $parts[0]; DisplayVersion = $parts[1] }
+       }
+   $agents = $pkgList | Where-Object { Get-AgentCategory $_.DisplayName } | ForEach-Object {
+       [PSCustomObject]@{ VMName = $VM.Name; Site = $Site; Agent = $_.DisplayName; Version = $_.DisplayVersion; Category = Get-AgentCategory $_.DisplayName }
+   }
+   [PSCustomObject]@{
+       VMName = $VM.Name; Site = $Site; OSFamily = 'Linux'
+       ToolsVersion = $tools; OSVersion = $kernel
+       SoftwareList = $pkgList; AgentsFound = $agents
+   }
+}
+function Compare-SoftwareInventory {
+   param($SFResults, $TBResults)
+   $sfSw = $SFResults | ForEach-Object { $_.SoftwareList }
+   $tbSw = $TBResults | ForEach-Object { $_.SoftwareList }
+   $sfNames = $sfSw.DisplayName | Sort-Object -Unique
+   $tbNames = $tbSw.DisplayName | Sort-Object -Unique
+   $common = $sfNames | Where-Object { $_ -in $tbNames }
+   $onlySF = $sfNames | Where-Object { $_ -notin $tbNames }
+   $onlyTB = $tbNames | Where-Object { $_ -notin $sfNames }
+   $rows = foreach ($name in $common) {
+       $sfVer = ($sfSw | Where-Object DisplayName -eq $name | Select-Object -ExpandProperty DisplayVersion -Unique) -join ';'
+       $tbVer = ($tbSw | Where-Object DisplayName -eq $name | Select-Object -ExpandProperty DisplayVersion -Unique) -join ';'
+       [PSCustomObject]@{ SoftwareName = $name; Status = 'Common'; SF_Version = $sfVer; TB_Version = $tbVer; VersionMismatch = ($sfVer -ne $tbVer) }
+   }
+   $rows += $onlySF | ForEach-Object {
+       $ver = ($sfSw | Where-Object DisplayName -eq $_ | Select-Object -ExpandProperty DisplayVersion -Unique) -join ';'
+       [PSCustomObject]@{ SoftwareName = $_; Status = 'OnlyInSF'; SF_Version = $ver; TB_Version = 'Not Installed'; VersionMismatch = $false }
+   }
+   $rows += $onlyTB | ForEach-Object {
+       $ver = ($tbSw | Where-Object DisplayName -eq $_ | Select-Object -ExpandProperty DisplayVersion -Unique) -join ';'
+       [PSCustomObject]@{ SoftwareName = $_; Status = 'OnlyInTB'; SF_Version = 'Not Installed'; TB_Version = $ver; VersionMismatch = $false }
+   }
+   return $rows
+}
+# ------------------------------------------------------------------------
+# MAIN
+# ------------------------------------------------------------------------
+$winTargets = (Import-VMListFile -Path $WindowsVMListFile) | ForEach-Object { Resolve-VMTarget -Name $_ } | Where-Object { $_ }
+$linTargets = (Import-VMListFile -Path $LinuxVMListFile)   | ForEach-Object { Resolve-VMTarget -Name $_ } | Where-Object { $_ }
+Write-Log -Level INFO -Message ("Targets resolved -> Windows: {0}  Linux: {1}" -f $winTargets.Count, $linTargets.Count)
+$results   = [System.Collections.Generic.List[PSObject]]::new()
+$succeeded = 0
+$failed    = 0
+foreach ($t in $winTargets) {
+   if (-not $WindowsGuestCredential) {
+       Write-Failure -Stage 'Credential' -ObjectName $t.Name -Reason 'No -WindowsGuestCredential supplied.'
+       $failed++; continue
+   }
+   Write-Log -Level INFO -Message "[$($t.Site)] Collecting Windows software: $($t.Name)"
+   try {
+       $results.Add((Get-WindowsGuestSoftware -VM $t.VM -Credential $WindowsGuestCredential -Site $t.Site))
+       $succeeded++
+   }
+   catch {
+       Write-Failure -Stage 'WindowsSoftware' -ObjectName $t.Name -Reason $_.Exception.Message
+       $failed++
+   }
+}
+foreach ($t in $linTargets) {
+   $cred = if ($t.Site -eq 'SF') { $SFLinuxGuestCredential } else { $TBLinuxGuestCredential }
+   if (-not $cred) { $cred = $LinuxGuestCredential }
+   if (-not $cred) {
+       Write-Failure -Stage 'Credential' -ObjectName $t.Name -Reason "No Linux guest credential supplied for site $($t.Site)."
+       $failed++; continue
+   }
+   Write-Log -Level INFO -Message "[$($t.Site)] Collecting Linux packages: $($t.Name)"
+   try {
+       $results.Add((Get-LinuxGuestSoftware -VM $t.VM -Credential $cred -Site $t.Site))
+       $succeeded++
+   }
+   catch {
+       Write-Failure -Stage 'LinuxSoftware' -ObjectName $t.Name -Reason $_.Exception.Message
+       $failed++
+   }
+}
+$sfWin = $results | Where-Object { $_.OSFamily -eq 'Windows' -and $_.Site -eq 'SF' }
+$tbWin = $results | Where-Object { $_.OSFamily -eq 'Windows' -and $_.Site -eq 'TB' }
+$sfLin = $results | Where-Object { $_.OSFamily -eq 'Linux'   -and $_.Site -eq 'SF' }
+$tbLin = $results | Where-Object { $_.OSFamily -eq 'Linux'   -and $_.Site -eq 'TB' }
+$winComparison    = Compare-SoftwareInventory -SFResults $sfWin -TBResults $tbWin
+$linComparison    = Compare-SoftwareInventory -SFResults $sfLin -TBResults $tbLin
+$agentsComparison = $results | ForEach-Object { $_.AgentsFound } | Where-Object { $_ }
+$csvMap = [ordered]@{
+   'Windows_Software_Comparison.csv' = $winComparison
+   'Linux_Package_Comparison.csv'    = $linComparison
+   'Agents_Found.csv'                = $agentsComparison
+   'Errors.csv'                      = $ErrorLog
+}
+foreach ($kvp in $csvMap.GetEnumerator()) {
+   if ($kvp.Value -and $kvp.Value.Count -gt 0) {
+       $kvp.Value | Export-Csv -Path (Join-Path $CsvPath $kvp.Key) -NoTypeInformation -Encoding UTF8
+   }
+}
+if ($UseExcel) {
+   if (Test-Path $ExcelFile) { Remove-Item $ExcelFile -Force }
+   foreach ($kvp in $csvMap.GetEnumerator()) {
+       if ($kvp.Value -and $kvp.Value.Count -gt 0) {
+           $sheet = $kvp.Key -replace '_Comparison\.csv|_Found\.csv|\.csv'
+           $kvp.Value | Export-Excel -Path $ExcelFile -WorksheetName $sheet -AutoSize -FreezeTopRow -BoldTopRow -TableStyle Medium6
+       }
+   }
+}
+$totalTargets = $winTargets.Count + $linTargets.Count
+$duration = [math]::Round(((Get-Date) - $StartTime).TotalMinutes, 2)
+Write-Log -Level SUCCESS -Message "===== Done. Duration: $duration min. Succeeded: $succeeded  Failed: $failed ====="
+Write-Host ""
+Write-Host "===== SUMMARY =====" -ForegroundColor Cyan
+Write-Host "Total VMs targeted : $totalTargets"
+Write-Host "Succeeded          : $succeeded" -ForegroundColor Green
+Write-Host "Failed             : $failed" -ForegroundColor $(if ($failed -gt 0) { 'Red' } else { 'Green' })
+if ($ErrorLog.Count -gt 0) {
+   Write-Host "Failure reasons:" -ForegroundColor Yellow
+   $ErrorLog | ForEach-Object { Write-Host ("  - [{0}] {1}: {2}" -f $_.Stage, $_.Object, $_.Reason) -ForegroundColor Yellow }
+}
+Write-Host "Reports            : $OutputPath" -ForegroundColor Cyan
