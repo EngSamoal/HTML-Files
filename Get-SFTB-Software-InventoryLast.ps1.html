@@ -265,11 +265,11 @@ function Compare-SoftwareInventory {
    }
    $rows += $onlySF | ForEach-Object {
        $ver = ($sfSw | Where-Object DisplayName -eq $_ | Select-Object -ExpandProperty DisplayVersion -Unique) -join ';'
-       [PSCustomObject]@{ SoftwareName = $_; Status = 'OnlyInSF'; SF_Version = $ver; TB_Version = 'Not Installed'; VersionMismatch = $false }
+       [PSCustomObject]@{ SoftwareName = $_; Status = 'OnlyInSF'; SF_Version = $ver; TB_Version = 'Not Installed'; VersionMismatch = 'Not Installed' }
    }
    $rows += $onlyTB | ForEach-Object {
        $ver = ($tbSw | Where-Object DisplayName -eq $_ | Select-Object -ExpandProperty DisplayVersion -Unique) -join ';'
-       [PSCustomObject]@{ SoftwareName = $_; Status = 'OnlyInTB'; SF_Version = 'Not Installed'; TB_Version = $ver; VersionMismatch = $false }
+       [PSCustomObject]@{ SoftwareName = $_; Status = 'OnlyInTB'; SF_Version = 'Not Installed'; TB_Version = $ver; VersionMismatch = 'Not Installed' }
    }
    return $rows
 }
