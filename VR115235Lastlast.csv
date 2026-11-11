@@ -1,0 +1,582 @@
+"Asset Vuln Datalist Report","11 Nov 2026 06:52AM GMT+0300","85"
+"Qiddiya","Riyadh Digital City MU04 – 10th Floor Prince Turki Bin Abdulaziz Al Awwal Road Al Nakheel District","RIYADH","None","27001","Saudi Arabia"
+"khalid alfaifi","qddyaAka1","All roles granted"
+"QID","Title","Severity","KB Severity","Type Detected","Last Detected","First Detected","Protocol","Port","Status","Asset Id","Asset Name","Asset IPV4","Asset IPV6","Solution","Asset Tags","Disabled","Ignored","QDS","QDS Severity","Detection AGE","Published Date","Patch Released","Category","RTI","Operating System","Last Fixed","Last Reopened","Times Detected","Threat","Vuln Patchable","Asset Critical Score","TruRisk Score","Vulnerability Tags","Results","Deep Scan Result","MITRE ATT&CK TACTIC ID","MITRE ATT&CK TACTIC NAME","MITRE ATT&CK TECHNIQUE ID","MITRE ATT&CK TECHNIQUE NAME"
+"105228","Built-in Guest Account Not Renamed at Windows Target System","3","3","Potential","Nov 11, 2026 06:45 AM","Oct 08, 2025 05:24 PM","'-","0","ACTIVE","12499123","SF-PAM-JMP02","10.50.16.170","fe80:0:0:0:c3b0:a44a:de1e:9f3a","Rename the Guest account.(Rename the Guest account.)","Cloud Agent,windows ,CAPS,Windows Servers Dynamic,Windows server ,Sixflag  Dynamic,sixflags,IT security-Private,SF wind and other,SF MOM for Day 1 CAB Review - 27 Nov 2025,NEW CR SF,Service Now,IT-Sec-OP,MS Defender,SF2","No","No","25","LOW","398","Aug 30, 2005 10:00 AM","'-","Security Policy","Patch Not Available","Microsoft Windows Server 2025 Datacenter 10.0.26100 64-bit N/A Build 26100 UBR 33650","'-","'-","2362","Knowing a valid username allows for substantially easier bruteforcing attacks.","No","3","204","","Guest
+","'-","","","",""
+"105234","Unused Active Windows Accounts Found","2","2","Potential","Nov 11, 2026 06:45 AM","Nov 20, 2025 10:30 AM","'-","0","ACTIVE","12499123","SF-PAM-JMP02","10.50.16.170","fe80:0:0:0:c3b0:a44a:de1e:9f3a","Workaround: Remove the unused accounts.(Workaround:<BR> Remove the unused accounts.)","Cloud Agent,windows ,CAPS,Windows Servers Dynamic,Windows server ,Sixflag  Dynamic,sixflags,IT security-Private,SF wind and other,SF MOM for Day 1 CAB Review - 27 Nov 2025,NEW CR SF,Service Now,IT-Sec-OP,MS Defender,SF2","No","No","40","MEDIUM","355","Sep 23, 2005 10:00 AM","'-","Security Policy","Easy Exploit,Patch Not Available","Microsoft Windows Server 2025 Datacenter 10.0.26100 64-bit N/A Build 26100 UBR 33650","Jun 04, 2026 06:55 PM","Jul 21, 2026 04:18 PM","1275","N/A","No","3","204","","s.l.samohamed.m
+","'-","","","",""
+"105228","Built-in Guest Account Not Renamed at Windows Target System","3","3","Potential","Nov 11, 2026 06:25 AM","Oct 22, 2025 08:11 PM","'-","0","ACTIVE","13359925","SF-AC-APP02-0","10.16.5.12","","Rename the Guest account.(Rename the Guest account.)","Cloud Agent,windows ,CAPS,Windows Servers Dynamic,Windows server ,Service Now,26 sys,MS Defender,SF2","No","No","25","LOW","384","Aug 30, 2005 10:00 AM","'-","Security Policy","Patch Not Available","Microsoft Windows Server 2025 Datacenter 10.0.26100 64-bit N/A Build 26100 UBR 33650","'-","'-","2362","Knowing a valid username allows for substantially easier bruteforcing attacks.","No","3","488","","Guest
+","'-","","","",""
+"105234","Unused Active Windows Accounts Found","2","2","Potential","Nov 11, 2026 06:25 AM","Nov 20, 2025 12:43 PM","'-","0","ACTIVE","13699923","SF-PAM-JP01","10.50.17.112","fe80:0:0:0:8a87:c537:1ca9:34ad","Workaround: Remove the unused accounts.(Workaround:<BR> Remove the unused accounts.)","Cloud Agent,windows ,CAPS,Windows Servers Dynamic,Windows server ,Sixflag  Dynamic,sixflags,IT security-Private,SF wind and other,SF MOM for Day 1 CAB Review - 27 Nov 2025,NEW CR SF,Service Now,SF DMZ,IT-Sec-OP,Louay - Test for Assets - Security & Identity Systems,MS Defender,SF2","No","No","40","MEDIUM","355","Sep 23, 2005 10:00 AM","'-","Security Policy","Easy Exploit,Patch Not Available","Microsoft Windows Server 2025 Datacenter 10.0.26100 64-bit N/A Build 26100 UBR 33650","Jun 04, 2026 03:41 PM","Jul 21, 2026 05:03 PM","1356","N/A","No","3","476","","s.l.samohamed.m
+","'-","","","",""
+"105234","Unused Active Windows Accounts Found","2","2","Potential","Nov 11, 2026 06:25 AM","Nov 06, 2025 04:39 PM","'-","0","ACTIVE","13359925","SF-AC-APP02-0","10.16.5.12","","Workaround: Remove the unused accounts.(Workaround:<BR> Remove the unused accounts.)","Cloud Agent,windows ,CAPS,Windows Servers Dynamic,Windows server ,Service Now,26 sys,MS Defender,SF2","No","No","40","MEDIUM","369","Sep 23, 2005 10:00 AM","'-","Security Policy","Easy Exploit,Patch Not Available","Microsoft Windows Server 2025 Datacenter 10.0.26100 64-bit N/A Build 26100 UBR 33650","Nov 13, 2025 07:05 PM","Nov 27, 2025 03:38 PM","2196","N/A","No","3","488","","s.l.mosamy 
+s.l.faalyahya 
+s.l.soalshubaike 
+s.l.khalbader 
+s.l.misandova.c 
+s.l.zushafi.m 
+s.l.abbinsalman 
+s.l.amajmi 
+s.l.samohamed.m 
+s.l.haboalfeira 
+s.l.ebinmahefoud 
+s.l.dalshammari
+","'-","","","",""
+"105228","Built-in Guest Account Not Renamed at Windows Target System","3","3","Potential","Nov 11, 2026 06:25 AM","Oct 28, 2025 08:39 PM","'-","0","ACTIVE","13699923","SF-PAM-JP01","10.50.17.112","fe80:0:0:0:8a87:c537:1ca9:34ad","Rename the Guest account.(Rename the Guest account.)","Cloud Agent,windows ,CAPS,Windows Servers Dynamic,Windows server ,Sixflag  Dynamic,sixflags,IT security-Private,SF wind and other,SF MOM for Day 1 CAB Review - 27 Nov 2025,NEW CR SF,Service Now,SF DMZ,IT-Sec-OP,Louay - Test for Assets - Security & Identity Systems,MS Defender,SF2","No","No","25","LOW","378","Aug 30, 2005 10:00 AM","'-","Security Policy","Patch Not Available","Microsoft Windows Server 2025 Datacenter 10.0.26100 64-bit N/A Build 26100 UBR 33650","'-","'-","2303","Knowing a valid username allows for substantially easier bruteforcing attacks.","No","3","476","","Guest
+","'-","","","",""
+"105228","Built-in Guest Account Not Renamed at Windows Target System","3","3","Potential","Nov 11, 2026 06:25 AM","Oct 22, 2025 08:38 PM","'-","0","ACTIVE","13046327","SF-PAM-BRG01","10.50.16.165","","Rename the Guest account.(Rename the Guest account.)","Cloud Agent,windows ,CAPS,Windows Servers Dynamic,Windows server ,Sixflag  Dynamic,sixflags,SF wind and other,SF MOM for Day 1 CAB Review - 27 Nov 2025,NEW CR SF,Service Now,IT-Sec-OP,MS Defender,SF2","No","No","25","LOW","384","Aug 30, 2005 10:00 AM","'-","Security Policy","Patch Not Available","Microsoft Windows Server 2025 Datacenter 10.0.26100 64-bit N/A Build 26100 UBR 33650","'-","'-","2368","Knowing a valid username allows for substantially easier bruteforcing attacks.","No","3","203","","Guest
+","'-","","","",""
+"105234","Unused Active Windows Accounts Found","2","2","Potential","Nov 11, 2026 06:25 AM","Nov 20, 2025 12:53 PM","'-","0","ACTIVE","13046327","SF-PAM-BRG01","10.50.16.165","","Workaround: Remove the unused accounts.(Workaround:<BR> Remove the unused accounts.)","Cloud Agent,windows ,CAPS,Windows Servers Dynamic,Windows server ,Sixflag  Dynamic,sixflags,SF wind and other,SF MOM for Day 1 CAB Review - 27 Nov 2025,NEW CR SF,Service Now,IT-Sec-OP,MS Defender,SF2","No","No","40","MEDIUM","355","Sep 23, 2005 10:00 AM","'-","Security Policy","Easy Exploit,Patch Not Available","Microsoft Windows Server 2025 Datacenter 10.0.26100 64-bit N/A Build 26100 UBR 33650","Jun 04, 2026 03:17 PM","Jul 21, 2026 04:20 PM","1072","N/A","No","3","203","","s.l.samohamed.m 
+s.makhtar.m
+","'-","","","",""
+"383211","VMware Tools Insecure File Handling Vulnerability (VMSA-2025-0007)","3","3","Confirmed","Nov 11, 2026 05:29 AM","Oct 22, 2025 10:10 PM","'-","0","ACTIVE","13143327","SF-PAM-RDS01","10.50.16.163","fe80:0:0:0:e970:e327:3479:f842","The Vendor has released fixed versions for windows and linux in v12.5.2 and no patches are released for MAC OSX. For more information please visit VMware advisory VMSA-2025-0007Workaround:VMSA-2025-0007(https://support.broadcom.com/web/ecx/support-content-notification/-/external/content/SecurityAdvisories/0/25683)","Cloud Agent,windows ,CAPS,Windows Servers Dynamic,Windows server ,Sixflag  Dynamic,sixflags,SF wind and other,SF MOM for Day 1 CAB Review - 27 Nov 2025,Service Now,MS Defender,SF2","No","No","36","LOW","384","May 19, 2025 04:17 PM","May 12, 2025 03:00 AM","Local","Easy Exploit,Public Exploit","Microsoft Windows Server 2025 Datacenter 10.0.26100 64-bit N/A Build 26100 UBR 33650","'-","'-","2349","A malicious actor with non-administrative privileges on a guest VM may tamper the local files to trigger insecure file operations within that VM.<P>","Yes","3","495","","C:\Program Files\VMware\VMware Tools\vmtoolsd.exe  Version is  12.5.1.52451
+","'-","","","",""
+"386741","VMware Tools Local Privilege Escalation Vulnerability (VMSA-2025-0015)","4","4","Potential","Nov 11, 2026 05:29 AM","Mar 12, 2026 08:14 PM","'-","0","ACTIVE","13143327","SF-PAM-RDS01","10.50.16.163","fe80:0:0:0:e970:e327:3479:f842","For more information, please visit VMware advisory VMSA-2025-0013(https://support.broadcom.com/web/ecx/support-content-notification/-/external/content/SecurityAdvisories/0/36149)","Cloud Agent,windows ,CAPS,Windows Servers Dynamic,Windows server ,Sixflag  Dynamic,sixflags,SF wind and other,SF MOM for Day 1 CAB Review - 27 Nov 2025,Service Now,MS Defender,SF2","No","No","95","CRITICAL","243","Mar 12, 2026 05:02 PM","Sep 29, 2025 03:00 AM","Local","Easy Exploit,Public Exploit,Privilege Escalation,CISA Known Exploited Vulnerabilities","Microsoft Windows Server 2025 Datacenter 10.0.26100 64-bit N/A Build 26100 UBR 33650","'-","'-","1496","A malicious local actor with non-administrative privileges having access to a VM with VMware Tools installed and managed by Aria Operations with SDMP enabled may exploit this vulnerability to escalate privileges to root on the same VM.","Yes","3","495","","C:\Program Files\VMware\VMware Tools\vmtoolsd.exe  Version is  12.5.1.52451
+","'-","TA0004","privilege-escalation","T1068","Exploitation for Privilege Escalation"
+"105234","Unused Active Windows Accounts Found","2","2","Potential","Nov 11, 2026 05:29 AM","Nov 20, 2025 12:54 PM","'-","0","ACTIVE","13143327","SF-PAM-RDS01","10.50.16.163","fe80:0:0:0:e970:e327:3479:f842","Workaround: Remove the unused accounts.(Workaround:<BR> Remove the unused accounts.)","Cloud Agent,windows ,CAPS,Windows Servers Dynamic,Windows server ,Sixflag  Dynamic,sixflags,SF wind and other,SF MOM for Day 1 CAB Review - 27 Nov 2025,Service Now,MS Defender,SF2","No","No","40","MEDIUM","355","Sep 23, 2005 10:00 AM","'-","Security Policy","Easy Exploit,Patch Not Available","Microsoft Windows Server 2025 Datacenter 10.0.26100 64-bit N/A Build 26100 UBR 33650","'-","'-","2184","N/A","No","3","495","","pampri 
+s.l.zushafi.m 
+s.l.haelshazly 
+s.l.abbinsalman 
+s.l.amajmi 
+s.l.smohamed.m 
+s.l.samohamed.m 
+s.makhtar.m
+","'-","","","",""
+"385437","VMware Tools Improper Authorization Vulnerability (VMSA-2025-0015)","4","4","Confirmed","Nov 11, 2026 05:29 AM","Oct 22, 2025 10:10 PM","'-","0","ACTIVE","13143327","SF-PAM-RDS01","10.50.16.163","fe80:0:0:0:e970:e327:3479:f842","For more information, please visit VMware advisory VMSA-2025-0013(https://support.broadcom.com/web/ecx/support-content-notification/-/external/content/SecurityAdvisories/0/36149)","Cloud Agent,windows ,CAPS,Windows Servers Dynamic,Windows server ,Sixflag  Dynamic,sixflags,SF wind and other,SF MOM for Day 1 CAB Review - 27 Nov 2025,Service Now,MS Defender,SF2","No","No","35","LOW","384","Oct 01, 2025 03:30 PM","Sep 29, 2025 03:00 AM","Local","'-","Microsoft Windows Server 2025 Datacenter 10.0.26100 64-bit N/A Build 26100 UBR 33650","'-","'-","2349","A malicious actor with non-administrative privileges on a guest VM, who is already authenticated through vCenter or ESX may exploit this issue to access other guest VMs.","Yes","3","495","","C:\Program Files\VMware\VMware Tools\vmtoolsd.exe  Version is  12.5.1.52451
+","'-","TA0004,TA0008","lateral-movement,privilege-escalation","T1210,T1068","Exploitation for Privilege Escalation,Exploitation of Remote Services"
+"105228","Built-in Guest Account Not Renamed at Windows Target System","3","3","Potential","Nov 11, 2026 05:29 AM","Oct 22, 2025 10:10 PM","'-","0","ACTIVE","13143327","SF-PAM-RDS01","10.50.16.163","fe80:0:0:0:e970:e327:3479:f842","Rename the Guest account.(Rename the Guest account.)","Cloud Agent,windows ,CAPS,Windows Servers Dynamic,Windows server ,Sixflag  Dynamic,sixflags,SF wind and other,SF MOM for Day 1 CAB Review - 27 Nov 2025,Service Now,MS Defender,SF2","No","No","25","LOW","384","Aug 30, 2005 10:00 AM","'-","Security Policy","Patch Not Available","Microsoft Windows Server 2025 Datacenter 10.0.26100 64-bit N/A Build 26100 UBR 33650","'-","'-","2349","Knowing a valid username allows for substantially easier bruteforcing attacks.","No","3","495","","Guest
+","'-","","","",""
+"383583","VMware Tools Information Disclosure Vulnerability (VMSA-2025-0013)","3","3","Confirmed","Nov 11, 2026 05:29 AM","Oct 22, 2025 10:10 PM","'-","0","ACTIVE","13143327","SF-PAM-RDS01","10.50.16.163","fe80:0:0:0:e970:e327:3479:f842","For more information, please visit VMware advisory VMSA-2025-0013(https://support.broadcom.com/web/ecx/support-content-notification/-/external/content/SecurityAdvisories/0/35877)","Cloud Agent,windows ,CAPS,Windows Servers Dynamic,Windows server ,Sixflag  Dynamic,sixflags,SF wind and other,SF MOM for Day 1 CAB Review - 27 Nov 2025,Service Now,MS Defender,SF2","No","No","35","LOW","384","Jul 22, 2025 04:10 PM","Jul 15, 2025 03:00 AM","Local","Easy Exploit,High Data Loss,Privilege Escalation","Microsoft Windows Server 2025 Datacenter 10.0.26100 64-bit N/A Build 26100 UBR 33650","'-","'-","2349","A malicious actor with local administrative privileges on a virtual machine may be able to exploit this issue to leak memory from processes communicating with vSockets.","Yes","3","495","","C:\Program Files\VMware\VMware Tools\vmtoolsd.exe  Version is  12.5.1.52451
+","'-","","","",""
+"105228","Built-in Guest Account Not Renamed at Windows Target System","3","3","Potential","Nov 11, 2026 05:19 AM","Oct 30, 2025 04:32 PM","'-","0","ACTIVE","13734526","SF-PAM-JZ01","10.50.17.114","fe80:0:0:0:1794:29e:ae58:d4c0","Rename the Guest account.(Rename the Guest account.)","Cloud Agent,windows ,CAPS,Windows Servers Dynamic,Windows server ,Sixflag  Dynamic,sixflags,SF wind and other,SF MOM for Day 1 CAB Review - 27 Nov 2025,Service Now,SF DMZ,Louay - Test for Assets - Security & Identity Systems,MS Defender,SF2","No","No","25","LOW","376","Aug 30, 2005 10:00 AM","'-","Security Policy","Patch Not Available","Microsoft Windows Server 2025 Datacenter 10.0.26100 64-bit N/A Build 26100 UBR 33650","'-","'-","2305","Knowing a valid username allows for substantially easier bruteforcing attacks.","No","3","476","","Guest
+","'-","","","",""
+"105234","Unused Active Windows Accounts Found","2","2","Potential","Nov 11, 2026 05:19 AM","Apr 07, 2026 01:23 PM","'-","0","ACTIVE","13734526","SF-PAM-JZ01","10.50.17.114","fe80:0:0:0:1794:29e:ae58:d4c0","Workaround: Remove the unused accounts.(Workaround:<BR> Remove the unused accounts.)","Cloud Agent,windows ,CAPS,Windows Servers Dynamic,Windows server ,Sixflag  Dynamic,sixflags,SF wind and other,SF MOM for Day 1 CAB Review - 27 Nov 2025,Service Now,SF DMZ,Louay - Test for Assets - Security & Identity Systems,MS Defender,SF2","No","No","40","MEDIUM","217","Sep 23, 2005 10:00 AM","'-","Security Policy","Easy Exploit,Patch Not Available","Microsoft Windows Server 2025 Datacenter 10.0.26100 64-bit N/A Build 26100 UBR 33650","Jun 04, 2026 06:27 PM","Jul 21, 2026 03:48 PM","1065","N/A","No","3","476","","s.l.samohamed.m
+","'-","","","",""
+"105228","Built-in Guest Account Not Renamed at Windows Target System","3","3","Potential","Nov 11, 2026 05:19 AM","Oct 09, 2025 07:11 PM","'-","0","ACTIVE","12494930","SF-PAM-PRA01","10.50.16.167","fe80:0:0:0:ae0a:2138:a56e:fac7","Rename the Guest account.(Rename the Guest account.)","Cloud Agent,windows ,CAPS,Windows Servers Dynamic,Windows server ,Sixflag  Dynamic,sixflags,SF wind and other,SF MOM for Day 1 CAB Review - 27 Nov 2025,Service Now,MS Defender,SF2","No","No","25","LOW","397","Aug 30, 2005 10:00 AM","'-","Security Policy","Patch Not Available","Microsoft Windows Server 2025 Datacenter 10.0.26100 64-bit N/A Build 26100 UBR 33650","'-","'-","2429","Knowing a valid username allows for substantially easier bruteforcing attacks.","No","3","210","","Guest
+","'-","","","",""
+"105234","Unused Active Windows Accounts Found","2","2","Potential","Nov 11, 2026 05:19 AM","Apr 07, 2026 12:47 PM","'-","0","ACTIVE","12494930","SF-PAM-PRA01","10.50.16.167","fe80:0:0:0:ae0a:2138:a56e:fac7","Workaround: Remove the unused accounts.(Workaround:<BR> Remove the unused accounts.)","Cloud Agent,windows ,CAPS,Windows Servers Dynamic,Windows server ,Sixflag  Dynamic,sixflags,SF wind and other,SF MOM for Day 1 CAB Review - 27 Nov 2025,Service Now,MS Defender,SF2","No","No","40","MEDIUM","217","Sep 23, 2005 10:00 AM","'-","Security Policy","Easy Exploit,Patch Not Available","Microsoft Windows Server 2025 Datacenter 10.0.26100 64-bit N/A Build 26100 UBR 33650","'-","'-","1336","N/A","No","3","210","","s.l.zushafi.m 
+s.l.haelshazly 
+s.l.abbinsalman 
+s.l.amajmi 
+s.l.smohamed.m 
+s.l.samohamed.m 
+s.makhtar.m
+","'-","","","",""
+"105228","Built-in Guest Account Not Renamed at Windows Target System","3","3","Potential","Nov 11, 2026 05:19 AM","Oct 09, 2025 04:06 PM","'-","0","ACTIVE","10388738","SF-SN-DIS02-0","10.50.16.12","","Rename the Guest account.(Rename the Guest account.)","Cloud Agent,windows ,CAPS,Windows Servers Dynamic,Windows server ,Sixflag  Dynamic,sixflags,SF wind and other,SF MOM for Day 1 CAB Review - 27 Nov 2025,Service Now,MS Defender,SF2","No","No","25","LOW","397","Aug 30, 2005 10:00 AM","'-","Security Policy","Patch Not Available","Microsoft Windows Server 2025 Datacenter 10.0.26100 64-bit N/A Build 26100 UBR 33650","'-","'-","2420","Knowing a valid username allows for substantially easier bruteforcing attacks.","No","3","209","","Guest
+","'-","","","",""
+"386127","Veeam Agent for Microsoft Windows Local Privilege Escalation Vulnerability (KB4771)","4","4","Confirmed","Nov 11, 2026 05:19 AM","Dec 02, 2025 05:01 AM","'-","0","ACTIVE","10388738","SF-SN-DIS02-0","10.50.16.12","","The vendor has released patches for these issues. Customers are advised to refer to  KB4771.(https://www.veeam.com/kb4771)","Cloud Agent,windows ,CAPS,Windows Servers Dynamic,Windows server ,Sixflag  Dynamic,sixflags,SF wind and other,SF MOM for Day 1 CAB Review - 27 Nov 2025,Service Now,MS Defender,SF2","No","No","35","LOW","344","Dec 01, 2025 03:24 PM","Oct 15, 2025 03:00 AM","Local","Easy Exploit,Privilege Escalation","Microsoft Windows Server 2025 Datacenter 10.0.26100 64-bit N/A Build 26100 UBR 33650","'-","'-","2138","Successful exploitation of this vulnerability may lead to Local Privilege Escalation.<P>","No","3","209","","C:\Program Files\Veeam\Endpoint Backup\Veeam.Backup.Agent.dll  Version is  6.3.1.1074
+","'-","","","",""
+"105234","Unused Active Windows Accounts Found","2","2","Potential","Nov 11, 2026 05:19 AM","Nov 27, 2025 01:46 PM","'-","0","ACTIVE","10388738","SF-SN-DIS02-0","10.50.16.12","","Workaround: Remove the unused accounts.(Workaround:<BR> Remove the unused accounts.)","Cloud Agent,windows ,CAPS,Windows Servers Dynamic,Windows server ,Sixflag  Dynamic,sixflags,SF wind and other,SF MOM for Day 1 CAB Review - 27 Nov 2025,Service Now,MS Defender,SF2","No","No","40","MEDIUM","348","Sep 23, 2005 10:00 AM","'-","Security Policy","Easy Exploit,Patch Not Available","Microsoft Windows Server 2025 Datacenter 10.0.26100 64-bit N/A Build 26100 UBR 33650","'-","'-","2167","N/A","No","3","209","","s.l.zushafi.m 
+s.l.haelshazly 
+s.l.abbinsalman 
+s.l.amajmi 
+s.l.smohamed.m 
+s.l.samohamed.m 
+s.l.imahmad.c 
+s.l.imahmed.c
+","'-","","","",""
+"105228","Built-in Guest Account Not Renamed at Windows Target System","3","3","Potential","Nov 11, 2026 05:19 AM","Oct 22, 2025 07:58 PM","'-","0","ACTIVE","13141327","SF-AC-APP05-0","10.16.5.15","","Rename the Guest account.(Rename the Guest account.)","Cloud Agent,windows ,CAPS,Windows Servers Dynamic,Windows server ,Service Now,26 sys,MS Defender,SF2","No","No","25","LOW","384","Aug 30, 2005 10:00 AM","'-","Security Policy","Patch Not Available","Microsoft Windows Server 2025 Datacenter 10.0.26100 64-bit N/A Build 26100 UBR 33650","'-","'-","2353","Knowing a valid username allows for substantially easier bruteforcing attacks.","No","3","498","","Guest
+","'-","","","",""
+"105234","Unused Active Windows Accounts Found","2","2","Potential","Nov 11, 2026 05:19 AM","Oct 29, 2025 03:37 PM","'-","0","ACTIVE","13141327","SF-AC-APP05-0","10.16.5.15","","Workaround: Remove the unused accounts.(Workaround:<BR> Remove the unused accounts.)","Cloud Agent,windows ,CAPS,Windows Servers Dynamic,Windows server ,Service Now,26 sys,MS Defender,SF2","No","No","40","MEDIUM","377","Sep 23, 2005 10:00 AM","'-","Security Policy","Easy Exploit,Patch Not Available","Microsoft Windows Server 2025 Datacenter 10.0.26100 64-bit N/A Build 26100 UBR 33650","Nov 03, 2025 05:36 PM","Nov 27, 2025 02:39 PM","2177","N/A","No","3","498","","s.l.zushafi.m 
+s.l.haelshazly 
+s.l.abbinsalman 
+s.l.amajmi 
+s.l.samohamed.m 
+s.l.haboalferia 
+s.l.ebinmahefoud
+","'-","","","",""
+"105228","Built-in Guest Account Not Renamed at Windows Target System","3","3","Potential","Nov 11, 2026 04:37 AM","Oct 22, 2025 09:31 PM","'-","0","ACTIVE","13106926","SF-AC-APP04-0","10.16.5.14","","Rename the Guest account.(Rename the Guest account.)","Cloud Agent,windows ,CAPS,Windows Servers Dynamic,Windows server ,Service Now,26 sys,MS Defender,SF2","No","No","25","LOW","384","Aug 30, 2005 10:00 AM","'-","Security Policy","Patch Not Available","Microsoft Windows Server 2025 Datacenter 10.0.26100 64-bit N/A Build 26100 UBR 33650","'-","'-","2360","Knowing a valid username allows for substantially easier bruteforcing attacks.","No","3","509","","Guest
+","'-","","","",""
+"105234","Unused Active Windows Accounts Found","2","2","Potential","Nov 11, 2026 04:37 AM","Oct 29, 2025 05:36 PM","'-","0","ACTIVE","13106926","SF-AC-APP04-0","10.16.5.14","","Workaround: Remove the unused accounts.(Workaround:<BR> Remove the unused accounts.)","Cloud Agent,windows ,CAPS,Windows Servers Dynamic,Windows server ,Service Now,26 sys,MS Defender,SF2","No","No","40","MEDIUM","377","Sep 23, 2005 10:00 AM","'-","Security Policy","Easy Exploit,Patch Not Available","Microsoft Windows Server 2025 Datacenter 10.0.26100 64-bit N/A Build 26100 UBR 33650","Nov 20, 2025 04:17 PM","Nov 27, 2025 03:18 PM","2276","N/A","No","3","509","","s.l.khalnader 
+remoteuser 
+s.l.samohamed.m 
+s.l.haboalferia 
+s.l.ebinmahefoud
+","'-","","","",""
+"105228","Built-in Guest Account Not Renamed at Windows Target System","3","3","Potential","Nov 11, 2026 04:37 AM","Oct 22, 2025 06:18 PM","'-","0","ACTIVE","13072325","SF-AC-APP01-0","10.16.5.11","","Rename the Guest account.(Rename the Guest account.)","Cloud Agent,windows ,CAPS,CAPS Leader,Windows Servers Dynamic,Windows server ,Service Now,26 sys,MS Defender,SF2","No","No","25","LOW","384","Aug 30, 2005 10:00 AM","'-","Security Policy","Patch Not Available","Microsoft Windows Server 2025 Datacenter 10.0.26100 64-bit N/A Build 26100 UBR 33650","'-","'-","2364","Knowing a valid username allows for substantially easier bruteforcing attacks.","No","3","512","","Guest
+","'-","","","",""
+"105234","Unused Active Windows Accounts Found","2","2","Potential","Nov 11, 2026 04:37 AM","Oct 29, 2025 03:06 PM","'-","0","ACTIVE","13072325","SF-AC-APP01-0","10.16.5.11","","Workaround: Remove the unused accounts.(Workaround:<BR> Remove the unused accounts.)","Cloud Agent,windows ,CAPS,CAPS Leader,Windows Servers Dynamic,Windows server ,Service Now,26 sys,MS Defender,SF2","No","No","40","MEDIUM","377","Sep 23, 2005 10:00 AM","'-","Security Policy","Easy Exploit,Patch Not Available","Microsoft Windows Server 2025 Datacenter 10.0.26100 64-bit N/A Build 26100 UBR 33650","Nov 02, 2025 04:18 PM","Nov 27, 2025 01:39 PM","2183","N/A","No","3","512","","s.l.faayahya 
+s.l.smohamed.m 
+s.l.amajami 
+s.l.zushafi.m 
+s.l.haelshazly.m 
+s.l.abbinsalman 
+s.l.samohamed.m 
+s.l.haboalferia 
+s.l.ebinmahefoud 
+s.l.dalshammari
+","'-","","","",""
+"105228","Built-in Guest Account Not Renamed at Windows Target System","3","3","Potential","Nov 11, 2026 04:28 AM","Oct 22, 2025 07:46 PM","'-","0","ACTIVE","13097727","SF-PAM-APP01-0","10.50.16.161","fe80:0:0:0:2d84:7ccf:457c:d157","Rename the Guest account.(Rename the Guest account.)","Cloud Agent,windows ,CAPS,Windows Servers Dynamic,Windows server ,Sixflag  Dynamic,sixflags,SF wind and other,SF MOM for Day 1 CAB Review - 27 Nov 2025,Service Now,MS Defender,SF2","No","No","25","LOW","384","Aug 30, 2005 10:00 AM","'-","Security Policy","Patch Not Available","Microsoft Windows Server 2025 Datacenter 10.0.26100 64-bit N/A Build 26100 UBR 33650","'-","'-","2353","Knowing a valid username allows for substantially easier bruteforcing attacks.","No","3","504","","Guest
+","'-","","","",""
+"105234","Unused Active Windows Accounts Found","2","2","Potential","Nov 11, 2026 04:28 AM","Apr 07, 2026 03:48 PM","'-","0","ACTIVE","13097727","SF-PAM-APP01-0","10.50.16.161","fe80:0:0:0:2d84:7ccf:457c:d157","Workaround: Remove the unused accounts.(Workaround:<BR> Remove the unused accounts.)","Cloud Agent,windows ,CAPS,Windows Servers Dynamic,Windows server ,Sixflag  Dynamic,sixflags,SF wind and other,SF MOM for Day 1 CAB Review - 27 Nov 2025,Service Now,MS Defender,SF2","No","No","40","MEDIUM","217","Sep 23, 2005 10:00 AM","'-","Security Policy","Easy Exploit,Patch Not Available","Microsoft Windows Server 2025 Datacenter 10.0.26100 64-bit N/A Build 26100 UBR 33650","'-","'-","1345","N/A","No","3","504","","s.l.zushafi.m 
+s.l.haelshazly 
+s.l.samohamed.m 
+s.makhtar.m
+","'-","","","",""
+"105228","Built-in Guest Account Not Renamed at Windows Target System","3","3","Potential","Nov 11, 2026 04:28 AM","Oct 08, 2025 05:20 PM","'-","0","ACTIVE","10421545","SF-PAM-JMP01","10.50.16.169","fe80:0:0:0:a220:39ed:4863:5b98","Rename the Guest account.(Rename the Guest account.)","Cloud Agent,windows ,CAPS,Windows Servers Dynamic,Windows server ,Sixflag  Dynamic,sixflags,IT security-Private,SF wind and other,SF MOM for Day 1 CAB Review - 27 Nov 2025,NEW CR SF,Service Now,IT-Sec-OP,MS Defender,SF2","No","No","25","LOW","398","Aug 30, 2005 10:00 AM","'-","Security Policy","Patch Not Available","Microsoft Windows Server 2025 Datacenter 10.0.26100 64-bit N/A Build 26100 UBR 33650","'-","'-","2362","Knowing a valid username allows for substantially easier bruteforcing attacks.","No","3","203","","Guest
+","'-","","","",""
+"105234","Unused Active Windows Accounts Found","2","2","Potential","Nov 11, 2026 04:28 AM","Nov 20, 2025 12:21 PM","'-","0","ACTIVE","10421545","SF-PAM-JMP01","10.50.16.169","fe80:0:0:0:a220:39ed:4863:5b98","Workaround: Remove the unused accounts.(Workaround:<BR> Remove the unused accounts.)","Cloud Agent,windows ,CAPS,Windows Servers Dynamic,Windows server ,Sixflag  Dynamic,sixflags,IT security-Private,SF wind and other,SF MOM for Day 1 CAB Review - 27 Nov 2025,NEW CR SF,Service Now,IT-Sec-OP,MS Defender,SF2","No","No","40","MEDIUM","355","Sep 23, 2005 10:00 AM","'-","Security Policy","Easy Exploit,Patch Not Available","Microsoft Windows Server 2025 Datacenter 10.0.26100 64-bit N/A Build 26100 UBR 33650","Dec 23, 2025 05:49 PM","Apr 07, 2026 04:12 PM","1552","N/A","No","3","203","","s.l.zushafi.m 
+s.l.haelshazly 
+s.l.abbinsalman 
+s.l.amajmi 
+s.l.samohamed.m 
+s.makhtar.m
+","'-","","","",""
+"105228","Built-in Guest Account Not Renamed at Windows Target System","3","3","Potential","Nov 11, 2026 04:13 AM","Oct 22, 2025 09:51 PM","'-","0","ACTIVE","13291527","SF-AC-APP03-0","10.16.5.13","","Rename the Guest account.(Rename the Guest account.)","Cloud Agent,windows ,CAPS,Windows Servers Dynamic,Windows server ,Service Now,26 sys,MS Defender,SF2","No","No","25","LOW","384","Aug 30, 2005 10:00 AM","'-","Security Policy","Patch Not Available","Microsoft Windows Server 2025 Datacenter 10.0.26100 64-bit N/A Build 26100 UBR 33650","'-","'-","2352","Knowing a valid username allows for substantially easier bruteforcing attacks.","No","3","488","","Guest
+","'-","","","",""
+"105234","Unused Active Windows Accounts Found","2","2","Potential","Nov 11, 2026 04:13 AM","Nov 27, 2025 05:35 PM","'-","0","ACTIVE","13291527","SF-AC-APP03-0","10.16.5.13","","Workaround: Remove the unused accounts.(Workaround:<BR> Remove the unused accounts.)","Cloud Agent,windows ,CAPS,Windows Servers Dynamic,Windows server ,Service Now,26 sys,MS Defender,SF2","No","No","40","MEDIUM","348","Sep 23, 2005 10:00 AM","'-","Security Policy","Easy Exploit,Patch Not Available","Microsoft Windows Server 2025 Datacenter 10.0.26100 64-bit N/A Build 26100 UBR 33650","'-","'-","2149","N/A","No","3","488","","s.l.zushafi.m 
+s.l.haelshazly 
+s.l.abbinsalman 
+s.l.amajmi 
+s.l.smohamed.m 
+s.l.samohamed.m 
+s.l.haboalferia 
+s.l.ebinmahefoud
+","'-","","","",""
+"105228","Built-in Guest Account Not Renamed at Windows Target System","3","3","Potential","Nov 11, 2026 03:38 AM","Oct 22, 2025 09:07 PM","'-","0","ACTIVE","13316526","SF-PAM-JMP03","10.50.16.171","fe80:0:0:0:7444:d29c:35e4:be70","Rename the Guest account.(Rename the Guest account.)","Cloud Agent,windows ,CAPS,Windows Servers Dynamic,Windows server ,Sixflag  Dynamic,sixflags,IT security-Private,SF wind and other,SF MOM for Day 1 CAB Review - 27 Nov 2025,NEW CR SF,Service Now,IT-Sec-OP,MS Defender,SF2","No","No","25","LOW","384","Aug 30, 2005 10:00 AM","'-","Security Policy","Patch Not Available","Microsoft Windows Server 2025 Datacenter 10.0.26100 64-bit N/A Build 26100 UBR 33650","'-","'-","2349","Knowing a valid username allows for substantially easier bruteforcing attacks.","No","3","504","","Guest
+","'-","","","",""
+"105234","Unused Active Windows Accounts Found","2","2","Potential","Nov 11, 2026 03:38 AM","Nov 20, 2025 12:37 PM","'-","0","ACTIVE","13316526","SF-PAM-JMP03","10.50.16.171","fe80:0:0:0:7444:d29c:35e4:be70","Workaround: Remove the unused accounts.(Workaround:<BR> Remove the unused accounts.)","Cloud Agent,windows ,CAPS,Windows Servers Dynamic,Windows server ,Sixflag  Dynamic,sixflags,IT security-Private,SF wind and other,SF MOM for Day 1 CAB Review - 27 Nov 2025,NEW CR SF,Service Now,IT-Sec-OP,MS Defender,SF2","No","No","40","MEDIUM","355","Sep 23, 2005 10:00 AM","'-","Security Policy","Easy Exploit,Patch Not Available","Microsoft Windows Server 2025 Datacenter 10.0.26100 64-bit N/A Build 26100 UBR 33650","Jun 04, 2026 06:44 PM","Jul 21, 2026 03:54 PM","1273","N/A","No","3","504","","s.l.samohamed.m
+","'-","","","",""
+"5010926","DotNet (Nuget) Security Update for System.Security.Cryptography.Xml (GHSA-w3x6-4m5h-cxqf)","2","2","Confirmed","Apr 19, 2026 02:31 PM","Apr 19, 2026 02:31 PM","'-","0","NEW","13097727","SF-PAM-APP01-0","10.50.16.161","fe80:0:0:0:2d84:7ccf:457c:d157","Refer to Github security advisory GHSA-w3x6-4m5h-cxqf for updates and patch information.(https://github.com/advisories/GHSA-w3x6-4m5h-cxqf)","Cloud Agent,windows ,CAPS,Windows Servers Dynamic,Windows server ,Sixflag  Dynamic,sixflags,SF wind and other,SF MOM for Day 1 CAB Review - 27 Nov 2025,Service Now,MS Defender,SF2","No","No","35","LOW","205","Apr 15, 2026 05:06 PM","Apr 14, 2026 03:00 AM","SCA","High Lateral Movement","Microsoft Windows Server 2025 Datacenter 10.0.26100 64-bit N/A Build 26100 UBR 33650","'-","'-","1","Successful exploitation of this vulnerability could lead to a security breach or could affect integrity, availability, and confidentiality.","No","3","504","","#table cols=""5""
+Package Installed_Version Required_Version Language Install_Path
+System.Security.Cryptography.Xml 8.0.2 8.0.3 .Net C:\Program_Files\AzureConnectedMachineAgent\GCArcService2\GC\pwsh.deps.json
+","'-","","","",""
+"5007559","Microsoft .NET Security Update for February 2026","4","4","Confirmed","Apr 19, 2026 02:31 PM","Apr 19, 2026 02:31 PM","'-","0","NEW","13097727","SF-PAM-APP01-0","10.50.16.161","fe80:0:0:0:2d84:7ccf:457c:d157","Customers are advised to refer following articles for more information on the vulnerabilities and patches.
+CVE-2026-21218(Customers are advised to refer following articles for more information on the vulnerabilities and patches.<BR>
+https://msrc.microsoft.com/update-guide/en-US/vulnerability/CVE-2026-21218)","Cloud Agent,windows ,CAPS,Windows Servers Dynamic,Windows server ,Sixflag  Dynamic,sixflags,SF wind and other,SF MOM for Day 1 CAB Review - 27 Nov 2025,Service Now,MS Defender,SF2","No","No","35","LOW","205","Feb 11, 2026 04:25 PM","Feb 10, 2026 03:00 AM","SCA","Easy Exploit,High Lateral Movement","Microsoft Windows Server 2025 Datacenter 10.0.26100 64-bit N/A Build 26100 UBR 33650","'-","'-","1","Successful exploitation of this vulnerability could lead to a security breach or may affect integrity<P>","Yes","3","504","","#table cols=""5""
+Package Installed_Version Required_Version Language Install_Path
+Microsoft.NETCore.App.Runtime.win-x64 8.0.21 8.0.24 .Net C:\Program_Files\AzureConnectedMachineAgent\GCArcService2\GC\pwsh.deps.json
+Microsoft.NETCore.App.Runtime.win-x64 9.0.8 9.0.13 .Net C:\Program_Files\PowerShell\7\pwsh.deps.json
+","'-","","","",""
+"5010966","Microsoft .NET Security Update for April 2026","4","4","Confirmed","Apr 19, 2026 02:31 PM","Apr 19, 2026 02:31 PM","'-","0","NEW","13097727","SF-PAM-APP01-0","10.50.16.161","fe80:0:0:0:2d84:7ccf:457c:d157","Customers are advised to refer following articles for more information on the vulnerabilities and patches.
+CVE-2026-32203
+CVE-2026-26171
+CVE-2026-33116
+CVE-2026-32178
+(Customers are advised to refer following articles for more information on the vulnerabilities and patches.<BR>
+https://msrc.microsoft.com/update-guide/en-US/vulnerability/CVE-2026-32203
+https://msrc.microsoft.com/update-guide/en-US/vulnerability/CVE-2026-26171
+https://msrc.microsoft.com/update-guide/en-US/vulnerability/CVE-2026-33116
+https://msrc.microsoft.com/update-guide/en-US/vulnerability/CVE-2026-32178
+)","Cloud Agent,windows ,CAPS,Windows Servers Dynamic,Windows server ,Sixflag  Dynamic,sixflags,SF wind and other,SF MOM for Day 1 CAB Review - 27 Nov 2025,Service Now,MS Defender,SF2","No","No","35","LOW","205","Apr 15, 2026 05:23 AM","Apr 14, 2026 03:00 AM","SCA","High Lateral Movement","Microsoft Windows Server 2025 Datacenter 10.0.26100 64-bit N/A Build 26100 UBR 33650","'-","'-","1","Successful exploitation of this vulnerability could lead to a security breach or may affect integrity, availability, and confidentiality.","Yes","3","504","","#table cols=""5""
+Package Installed_Version Required_Version Language Install_Path
+Microsoft.NETCore.App.Runtime.win-x64 9.0.8 9.0.15 .Net C:\Program_Files\PowerShell\7\pwsh.deps.json
+Microsoft.NETCore.App.Runtime.win-x64 8.0.21 8.0.26 .Net C:\Program_Files\AzureConnectedMachineAgent\GCArcService2\GC\pwsh.deps.json
+","'-","","","",""
+"5010933","DotNet (Nuget) Security Update for System.Security.Cryptography.Xml (GHSA-37gx-xxp4-5rgx)","2","2","Confirmed","Apr 19, 2026 02:31 PM","Apr 19, 2026 02:31 PM","'-","0","NEW","13097727","SF-PAM-APP01-0","10.50.16.161","fe80:0:0:0:2d84:7ccf:457c:d157","Refer to Github security advisory GHSA-37gx-xxp4-5rgx for updates and patch information.(https://github.com/advisories/GHSA-37gx-xxp4-5rgx)","Cloud Agent,windows ,CAPS,Windows Servers Dynamic,Windows server ,Sixflag  Dynamic,sixflags,SF wind and other,SF MOM for Day 1 CAB Review - 27 Nov 2025,Service Now,MS Defender,SF2","No","No","35","LOW","205","Apr 15, 2026 05:06 PM","Apr 14, 2026 03:00 AM","SCA","High Lateral Movement","Microsoft Windows Server 2025 Datacenter 10.0.26100 64-bit N/A Build 26100 UBR 33650","'-","'-","1","Successful exploitation of this vulnerability could lead to a security breach or could affect integrity, availability, and confidentiality.","No","3","504","","#table cols=""5""
+Package Installed_Version Required_Version Language Install_Path
+System.Security.Cryptography.Xml 8.0.2 8.0.3 .Net C:\Program_Files\AzureConnectedMachineAgent\GCArcService2\GC\pwsh.deps.json
+","'-","","","",""
+"5008904","Microsoft .NET Security Update for March 2026","4","4","Confirmed","Apr 19, 2026 02:31 PM","Apr 19, 2026 02:31 PM","'-","0","NEW","13097727","SF-PAM-APP01-0","10.50.16.161","fe80:0:0:0:2d84:7ccf:457c:d157","Customers are advised to refer following articles for more information on the vulnerabilities and patches.
+CVE-2026-26127
+CVE-2026-26131
+(Customers are advised to refer following articles for more information on the vulnerabilities and patches.<BR>
+https://msrc.microsoft.com/update-guide/en-US/vulnerability/CVE-2026-26127
+https://msrc.microsoft.com/update-guide/en-US/vulnerability/CVE-2026-26131
+)","Cloud Agent,windows ,CAPS,Windows Servers Dynamic,Windows server ,Sixflag  Dynamic,sixflags,SF wind and other,SF MOM for Day 1 CAB Review - 27 Nov 2025,Service Now,MS Defender,SF2","No","No","95","CRITICAL","205","Mar 11, 2026 04:24 PM","Mar 10, 2026 03:00 AM","SCA","Easy Exploit,High Lateral Movement,Public Exploit","Microsoft Windows Server 2025 Datacenter 10.0.26100 64-bit N/A Build 26100 UBR 33650","'-","'-","1","Successful exploitation of this vulnerability could lead to a security breach or may affect integrity, availability, and confidentiality.","Yes","3","504","","#table cols=""5""
+Package Installed_Version Required_Version Language Install_Path
+Microsoft.NETCore.App.Runtime.win-x64 9.0.8 9.0.14 .Net C:\Program_Files\PowerShell\7\pwsh.deps.json
+","'-","TA0004","privilege-escalation","T1068","Exploitation for Privilege Escalation"
+"5007559","Microsoft .NET Security Update for February 2026","4","4","Confirmed","Apr 19, 2026 02:27 PM","Apr 19, 2026 02:27 PM","'-","0","NEW","13106926","SF-AC-APP04-0","10.16.5.14","","Customers are advised to refer following articles for more information on the vulnerabilities and patches.
+CVE-2026-21218(Customers are advised to refer following articles for more information on the vulnerabilities and patches.<BR>
+https://msrc.microsoft.com/update-guide/en-US/vulnerability/CVE-2026-21218)","Cloud Agent,windows ,CAPS,Windows Servers Dynamic,Windows server ,Service Now,26 sys,MS Defender,SF2","No","No","35","LOW","205","Feb 11, 2026 04:25 PM","Feb 10, 2026 03:00 AM","SCA","Easy Exploit,High Lateral Movement","Microsoft Windows Server 2025 Datacenter 10.0.26100 64-bit N/A Build 26100 UBR 33650","'-","'-","1","Successful exploitation of this vulnerability could lead to a security breach or may affect integrity<P>","Yes","3","509","","#table cols=""5""
+Package Installed_Version Required_Version Language Install_Path
+Microsoft.NETCore.App.Runtime.win-x64 8.0.21 8.0.24 .Net C:\Program_Files\AzureConnectedMachineAgent\GCArcService2\GC\pwsh.deps.json
+Microsoft.NETCore.App.Runtime.win-x64 9.0.8 9.0.13 .Net C:\Program_Files\PowerShell\7\pwsh.deps.json
+","'-","","","",""
+"5010926","DotNet (Nuget) Security Update for System.Security.Cryptography.Xml (GHSA-w3x6-4m5h-cxqf)","2","2","Confirmed","Apr 19, 2026 02:27 PM","Apr 19, 2026 02:27 PM","'-","0","NEW","13106926","SF-AC-APP04-0","10.16.5.14","","Refer to Github security advisory GHSA-w3x6-4m5h-cxqf for updates and patch information.(https://github.com/advisories/GHSA-w3x6-4m5h-cxqf)","Cloud Agent,windows ,CAPS,Windows Servers Dynamic,Windows server ,Service Now,26 sys,MS Defender,SF2","No","No","35","LOW","205","Apr 15, 2026 05:06 PM","Apr 14, 2026 03:00 AM","SCA","High Lateral Movement","Microsoft Windows Server 2025 Datacenter 10.0.26100 64-bit N/A Build 26100 UBR 33650","'-","'-","1","Successful exploitation of this vulnerability could lead to a security breach or could affect integrity, availability, and confidentiality.","No","3","509","","#table cols=""5""
+Package Installed_Version Required_Version Language Install_Path
+System.Security.Cryptography.Xml 8.0.2 8.0.3 .Net C:\Program_Files\AzureConnectedMachineAgent\GCArcService2\GC\pwsh.deps.json
+","'-","","","",""
+"5010966","Microsoft .NET Security Update for April 2026","4","4","Confirmed","Apr 19, 2026 02:27 PM","Apr 19, 2026 02:27 PM","'-","0","NEW","13106926","SF-AC-APP04-0","10.16.5.14","","Customers are advised to refer following articles for more information on the vulnerabilities and patches.
+CVE-2026-32203
+CVE-2026-26171
+CVE-2026-33116
+CVE-2026-32178
+(Customers are advised to refer following articles for more information on the vulnerabilities and patches.<BR>
+https://msrc.microsoft.com/update-guide/en-US/vulnerability/CVE-2026-32203
+https://msrc.microsoft.com/update-guide/en-US/vulnerability/CVE-2026-26171
+https://msrc.microsoft.com/update-guide/en-US/vulnerability/CVE-2026-33116
+https://msrc.microsoft.com/update-guide/en-US/vulnerability/CVE-2026-32178
+)","Cloud Agent,windows ,CAPS,Windows Servers Dynamic,Windows server ,Service Now,26 sys,MS Defender,SF2","No","No","35","LOW","205","Apr 15, 2026 05:23 AM","Apr 14, 2026 03:00 AM","SCA","High Lateral Movement","Microsoft Windows Server 2025 Datacenter 10.0.26100 64-bit N/A Build 26100 UBR 33650","'-","'-","1","Successful exploitation of this vulnerability could lead to a security breach or may affect integrity, availability, and confidentiality.","Yes","3","509","","#table cols=""5""
+Package Installed_Version Required_Version Language Install_Path
+Microsoft.NETCore.App.Runtime.win-x64 9.0.8 9.0.15 .Net C:\Program_Files\PowerShell\7\pwsh.deps.json
+Microsoft.NETCore.App.Runtime.win-x64 8.0.21 8.0.26 .Net C:\Program_Files\AzureConnectedMachineAgent\GCArcService2\GC\pwsh.deps.json
+","'-","","","",""
+"5010933","DotNet (Nuget) Security Update for System.Security.Cryptography.Xml (GHSA-37gx-xxp4-5rgx)","2","2","Confirmed","Apr 19, 2026 02:27 PM","Apr 19, 2026 02:27 PM","'-","0","NEW","13106926","SF-AC-APP04-0","10.16.5.14","","Refer to Github security advisory GHSA-37gx-xxp4-5rgx for updates and patch information.(https://github.com/advisories/GHSA-37gx-xxp4-5rgx)","Cloud Agent,windows ,CAPS,Windows Servers Dynamic,Windows server ,Service Now,26 sys,MS Defender,SF2","No","No","35","LOW","205","Apr 15, 2026 05:06 PM","Apr 14, 2026 03:00 AM","SCA","High Lateral Movement","Microsoft Windows Server 2025 Datacenter 10.0.26100 64-bit N/A Build 26100 UBR 33650","'-","'-","1","Successful exploitation of this vulnerability could lead to a security breach or could affect integrity, availability, and confidentiality.","No","3","509","","#table cols=""5""
+Package Installed_Version Required_Version Language Install_Path
+System.Security.Cryptography.Xml 8.0.2 8.0.3 .Net C:\Program_Files\AzureConnectedMachineAgent\GCArcService2\GC\pwsh.deps.json
+","'-","","","",""
+"5008904","Microsoft .NET Security Update for March 2026","4","4","Confirmed","Apr 19, 2026 02:27 PM","Apr 19, 2026 02:27 PM","'-","0","NEW","13106926","SF-AC-APP04-0","10.16.5.14","","Customers are advised to refer following articles for more information on the vulnerabilities and patches.
+CVE-2026-26127
+CVE-2026-26131
+(Customers are advised to refer following articles for more information on the vulnerabilities and patches.<BR>
+https://msrc.microsoft.com/update-guide/en-US/vulnerability/CVE-2026-26127
+https://msrc.microsoft.com/update-guide/en-US/vulnerability/CVE-2026-26131
+)","Cloud Agent,windows ,CAPS,Windows Servers Dynamic,Windows server ,Service Now,26 sys,MS Defender,SF2","No","No","95","CRITICAL","205","Mar 11, 2026 04:24 PM","Mar 10, 2026 03:00 AM","SCA","Easy Exploit,High Lateral Movement,Public Exploit","Microsoft Windows Server 2025 Datacenter 10.0.26100 64-bit N/A Build 26100 UBR 33650","'-","'-","1","Successful exploitation of this vulnerability could lead to a security breach or may affect integrity, availability, and confidentiality.","Yes","3","509","","#table cols=""5""
+Package Installed_Version Required_Version Language Install_Path
+Microsoft.NETCore.App.Runtime.win-x64 9.0.8 9.0.14 .Net C:\Program_Files\PowerShell\7\pwsh.deps.json
+","'-","TA0004","privilege-escalation","T1068","Exploitation for Privilege Escalation"
+"5010966","Microsoft .NET Security Update for April 2026","4","4","Confirmed","Apr 19, 2026 02:16 PM","Apr 19, 2026 02:16 PM","'-","0","NEW","13316526","SF-PAM-JMP03","10.50.16.171","fe80:0:0:0:7444:d29c:35e4:be70","Customers are advised to refer following articles for more information on the vulnerabilities and patches.
+CVE-2026-32203
+CVE-2026-26171
+CVE-2026-33116
+CVE-2026-32178
+(Customers are advised to refer following articles for more information on the vulnerabilities and patches.<BR>
+https://msrc.microsoft.com/update-guide/en-US/vulnerability/CVE-2026-32203
+https://msrc.microsoft.com/update-guide/en-US/vulnerability/CVE-2026-26171
+https://msrc.microsoft.com/update-guide/en-US/vulnerability/CVE-2026-33116
+https://msrc.microsoft.com/update-guide/en-US/vulnerability/CVE-2026-32178
+)","Cloud Agent,windows ,CAPS,Windows Servers Dynamic,Windows server ,Sixflag  Dynamic,sixflags,IT security-Private,SF wind and other,SF MOM for Day 1 CAB Review - 27 Nov 2025,NEW CR SF,Service Now,IT-Sec-OP,MS Defender,SF2","No","No","35","LOW","205","Apr 15, 2026 05:23 AM","Apr 14, 2026 03:00 AM","SCA","High Lateral Movement","Microsoft Windows Server 2025 Datacenter 10.0.26100 64-bit N/A Build 26100 UBR 33650","'-","'-","1","Successful exploitation of this vulnerability could lead to a security breach or may affect integrity, availability, and confidentiality.","Yes","3","504","","#table cols=""5""
+Package Installed_Version Required_Version Language Install_Path
+Microsoft.NETCore.App.Runtime.win-x64 9.0.8 9.0.15 .Net C:\Program_Files\PowerShell\7\pwsh.deps.json
+Microsoft.NETCore.App.Runtime.win-x64 8.0.12 8.0.26 .Net C:\Program_Files\AzureConnectedMachineAgent\GCArcService2\GC\pwsh.deps.json
+","'-","","","",""
+"5010926","DotNet (Nuget) Security Update for System.Security.Cryptography.Xml (GHSA-w3x6-4m5h-cxqf)","2","2","Confirmed","Apr 19, 2026 02:16 PM","Apr 19, 2026 02:16 PM","'-","0","NEW","13316526","SF-PAM-JMP03","10.50.16.171","fe80:0:0:0:7444:d29c:35e4:be70","Refer to Github security advisory GHSA-w3x6-4m5h-cxqf for updates and patch information.(https://github.com/advisories/GHSA-w3x6-4m5h-cxqf)","Cloud Agent,windows ,CAPS,Windows Servers Dynamic,Windows server ,Sixflag  Dynamic,sixflags,IT security-Private,SF wind and other,SF MOM for Day 1 CAB Review - 27 Nov 2025,NEW CR SF,Service Now,IT-Sec-OP,MS Defender,SF2","No","No","35","LOW","205","Apr 15, 2026 05:06 PM","Apr 14, 2026 03:00 AM","SCA","High Lateral Movement","Microsoft Windows Server 2025 Datacenter 10.0.26100 64-bit N/A Build 26100 UBR 33650","'-","'-","1","Successful exploitation of this vulnerability could lead to a security breach or could affect integrity, availability, and confidentiality.","No","3","504","","#table cols=""5""
+Package Installed_Version Required_Version Language Install_Path
+System.Security.Cryptography.Xml 8.0.2 8.0.3 .Net C:\Program_Files\AzureConnectedMachineAgent\GCArcService2\GC\pwsh.deps.json
+","'-","","","",""
+"5008904","Microsoft .NET Security Update for March 2026","4","4","Confirmed","Apr 19, 2026 02:16 PM","Apr 19, 2026 02:16 PM","'-","0","NEW","13316526","SF-PAM-JMP03","10.50.16.171","fe80:0:0:0:7444:d29c:35e4:be70","Customers are advised to refer following articles for more information on the vulnerabilities and patches.
+CVE-2026-26127
+CVE-2026-26131
+(Customers are advised to refer following articles for more information on the vulnerabilities and patches.<BR>
+https://msrc.microsoft.com/update-guide/en-US/vulnerability/CVE-2026-26127
+https://msrc.microsoft.com/update-guide/en-US/vulnerability/CVE-2026-26131
+)","Cloud Agent,windows ,CAPS,Windows Servers Dynamic,Windows server ,Sixflag  Dynamic,sixflags,IT security-Private,SF wind and other,SF MOM for Day 1 CAB Review - 27 Nov 2025,NEW CR SF,Service Now,IT-Sec-OP,MS Defender,SF2","No","No","95","CRITICAL","205","Mar 11, 2026 04:24 PM","Mar 10, 2026 03:00 AM","SCA","Easy Exploit,High Lateral Movement,Public Exploit","Microsoft Windows Server 2025 Datacenter 10.0.26100 64-bit N/A Build 26100 UBR 33650","'-","'-","1","Successful exploitation of this vulnerability could lead to a security breach or may affect integrity, availability, and confidentiality.","Yes","3","504","","#table cols=""5""
+Package Installed_Version Required_Version Language Install_Path
+Microsoft.NETCore.App.Runtime.win-x64 9.0.8 9.0.14 .Net C:\Program_Files\PowerShell\7\pwsh.deps.json
+","'-","TA0004","privilege-escalation","T1068","Exploitation for Privilege Escalation"
+"5010933","DotNet (Nuget) Security Update for System.Security.Cryptography.Xml (GHSA-37gx-xxp4-5rgx)","2","2","Confirmed","Apr 19, 2026 02:16 PM","Apr 19, 2026 02:16 PM","'-","0","NEW","13316526","SF-PAM-JMP03","10.50.16.171","fe80:0:0:0:7444:d29c:35e4:be70","Refer to Github security advisory GHSA-37gx-xxp4-5rgx for updates and patch information.(https://github.com/advisories/GHSA-37gx-xxp4-5rgx)","Cloud Agent,windows ,CAPS,Windows Servers Dynamic,Windows server ,Sixflag  Dynamic,sixflags,IT security-Private,SF wind and other,SF MOM for Day 1 CAB Review - 27 Nov 2025,NEW CR SF,Service Now,IT-Sec-OP,MS Defender,SF2","No","No","35","LOW","205","Apr 15, 2026 05:06 PM","Apr 14, 2026 03:00 AM","SCA","High Lateral Movement","Microsoft Windows Server 2025 Datacenter 10.0.26100 64-bit N/A Build 26100 UBR 33650","'-","'-","1","Successful exploitation of this vulnerability could lead to a security breach or could affect integrity, availability, and confidentiality.","No","3","504","","#table cols=""5""
+Package Installed_Version Required_Version Language Install_Path
+System.Security.Cryptography.Xml 8.0.2 8.0.3 .Net C:\Program_Files\AzureConnectedMachineAgent\GCArcService2\GC\pwsh.deps.json
+","'-","","","",""
+"5007559","Microsoft .NET Security Update for February 2026","4","4","Confirmed","Apr 19, 2026 02:16 PM","Apr 19, 2026 02:16 PM","'-","0","NEW","13316526","SF-PAM-JMP03","10.50.16.171","fe80:0:0:0:7444:d29c:35e4:be70","Customers are advised to refer following articles for more information on the vulnerabilities and patches.
+CVE-2026-21218(Customers are advised to refer following articles for more information on the vulnerabilities and patches.<BR>
+https://msrc.microsoft.com/update-guide/en-US/vulnerability/CVE-2026-21218)","Cloud Agent,windows ,CAPS,Windows Servers Dynamic,Windows server ,Sixflag  Dynamic,sixflags,IT security-Private,SF wind and other,SF MOM for Day 1 CAB Review - 27 Nov 2025,NEW CR SF,Service Now,IT-Sec-OP,MS Defender,SF2","No","No","35","LOW","205","Feb 11, 2026 04:25 PM","Feb 10, 2026 03:00 AM","SCA","Easy Exploit,High Lateral Movement","Microsoft Windows Server 2025 Datacenter 10.0.26100 64-bit N/A Build 26100 UBR 33650","'-","'-","1","Successful exploitation of this vulnerability could lead to a security breach or may affect integrity<P>","Yes","3","504","","#table cols=""5""
+Package Installed_Version Required_Version Language Install_Path
+Microsoft.NETCore.App.Runtime.win-x64 8.0.12 8.0.24 .Net C:\Program_Files\AzureConnectedMachineAgent\GCArcService2\GC\pwsh.deps.json
+Microsoft.NETCore.App.Runtime.win-x64 9.0.8 9.0.13 .Net C:\Program_Files\PowerShell\7\pwsh.deps.json
+","'-","","","",""
+"38628","Secure Sockets Layer/Transport Layer Security (SSL/TLS) Server supports Transport Layer Security (TLSv1.0)","3","3","Confirmed","Nov 05, 2025 02:41 PM","Nov 05, 2025 02:41 PM","TCP","3389","NEW","14157857","10.50.16.169","10.50.16.169","","Disable the use of TLSv1.0 protocol in favor of a cryptographically stronger protocol such as TLSv1.2.
+The following openssl commands can be used to do a manual test:
+openssl s_client -connect ip:port -tls1
+
+If the test is successful, then the target support TLSv1
+(Disable the use of TLSv1.0 protocol in favor of a cryptographically stronger protocol such as TLSv1.2.
+The following openssl commands can be used to do a manual test:
+openssl s_client -connect ip:port -tls1
+
+If the test is successful, then the target support TLSv1
+)","Sixflag  Dynamic,Sixflags,SF wind and other,SF MOM for Day 1 CAB Review - 27 Nov 2025,NEW CR SF,SF IT&OT assets - 25Jan,SF2","No","No","30","LOW","370","Jul 06, 2016 12:55 AM","'-","General remote services","Patch Not Available","'-","'-","'-","1","An attacker can exploit cryptographic flaws to conduct man-in-the-middle type attacks or to decryption communications.<P>
+For example: An attacker could force a downgrade from the TLS protocol to the older SSLv3.0 protocol and exploit the POODLE vulnerability, read secure communications or maliciously modify messages.<P>
+<A HREF=""https://blog.qualys.com/ssllabs/2014/12/08/poodle-bites-tls"" TARGET=""_blank"">A POODLE-type</A> attack could also be launched directly at TLS without negotiating a downgrade.<P>
+
+","No","3","72","","TLSv1.0 is supported
+","'-","","","",""
+"38170","SSL Certificate - Subject Common Name Does Not Match Server FQDN","2","2","Confirmed","Nov 05, 2025 02:41 PM","Nov 05, 2025 02:41 PM","TCP","3389","NEW","14157857","10.50.16.169","10.50.16.169","","Please install a server certificate whose Subject commonName or subjectAltName matches the server FQDN.(Please install a server certificate whose Subject commonName or subjectAltName matches the server FQDN.)","Sixflag  Dynamic,Sixflags,SF wind and other,SF MOM for Day 1 CAB Review - 27 Nov 2025,NEW CR SF,SF IT&OT assets - 25Jan,SF2","No","No","25","LOW","370","Jan 24, 2003 09:52 PM","'-","General remote services","Patch Not Available","'-","'-","'-","1","A man-in-the-middle attacker can exploit this vulnerability in tandem with a DNS cache poisoning attack to lure the client to another server, and then steal all the encryption communication.","No","3","72","","Certificate #0 CN=SF-PAM-JMP01 (SF-PAM-JMP01) doesn't resolve
+","'-","","","",""
+"38657","Birthday attacks against TLS ciphers with 64bit block size vulnerability (Sweet32)","3","3","Confirmed","Nov 05, 2025 02:41 PM","Nov 05, 2025 02:41 PM","TCP","3389","NEW","14157857","10.50.16.169","10.50.16.169","","Disable and stop using DES, 3DES, IDEA or RC2 ciphers.
+More information can be found at  Sweet32, Microsoft Windows TLS changes docs and Microsoft Transport Layer Security (TLS) registry settings(Disable and stop using DES, 3DES, IDEA or RC2 ciphers.<BR>
+https://docs.microsoft.com/en-us/windows-server/security/tls/tls-registry-settings)","Sixflag  Dynamic,Sixflags,SF wind and other,SF MOM for Day 1 CAB Review - 27 Nov 2025,NEW CR SF,SF IT&OT assets - 25Jan,SF2","No","No","42","MEDIUM","370","Mar 30, 2017 08:47 PM","'-","General remote services","Easy Exploit,Patch Not Available,Public Exploit","'-","'-","'-","1","Remote attackers can obtain cleartext data via a birthday attack against a long-duration encrypted session.","No","3","72","","#table cols=""6""
+CIPHER KEY-EXCHANGE AUTHENTICATION MAC ENCRYPTION(KEY-STRENGTH) GRADE
+TLSv1_WITH_64-BIT_CBC_CIPHERS_IS_SUPPORTED _ _ _ _ _
+DES-CBC3-SHA RSA RSA SHA1 3DES(168) MEDIUM
+TLSv1.1_WITH_64-BIT_CBC_CIPHERS_IS_SUPPORTED _ _ _ _ _
+DES-CBC3-SHA RSA RSA SHA1 3DES(168) MEDIUM
+TLSv1.2_WITH_64-BIT_CBC_CIPHERS_IS_SUPPORTED _ _ _ _ _
+DES-CBC3-SHA RSA RSA SHA1 3DES(168) MEDIUM
+","'-","","","",""
+"38173","SSL Certificate - Signature Verification Failed Vulnerability","2","2","Confirmed","Nov 05, 2025 02:41 PM","Nov 05, 2025 02:41 PM","TCP","3389","NEW","14157857","10.50.16.169","10.50.16.169","","Ensure the SSL certificate is valid and trusted. Install a certificate signed by a trusted Certificate Authority and configure the complete certificate chain, including any required intermediate certificates. Replace expired or invalid certificates and ensure proper issuer and signature configuration (Ensure the SSL certificate is valid and trusted. Install a certificate signed by a trusted Certificate Authority and configure the complete certificate chain, including any required intermediate certificates. Replace expired or invalid certificates and ensure proper issuer and signature configuration )","Sixflag  Dynamic,Sixflags,SF wind and other,SF MOM for Day 1 CAB Review - 27 Nov 2025,NEW CR SF,SF IT&OT assets - 25Jan,SF2","No","No","50","MEDIUM","370","Jan 29, 2003 11:37 PM","'-","General remote services","Easy Exploit,Patch Not Available","'-","'-","'-","1","By exploiting this vulnerability, man-in-the-middle attacks in tandem with DNS cache poisoning can occur.
+<P>
+Exception:<BR>
+If the server communicates only with a restricted set of clients who have the server certificate or the trusted CA certificate, then the server or CA certificate may not be available publicly, and the scan will be unable to verify the signature.","No","3","72","","Certificate #0 CN=SF-PAM-JMP01 ISSUER:_CN=SF-PAM-JMP01 self signed certificate
+","'-","","","",""
+"38794","Secure Sockets Layer/Transport Layer Security (SSL/TLS) Server Supports Transport Layer Security (TLSv1.1)","3","3","Confirmed","Nov 05, 2025 02:41 PM","Nov 05, 2025 02:41 PM","TCP","3389","NEW","14157857","10.50.16.169","10.50.16.169","","Disable the use of TLSv1.1 protocol in favor of a cryptographically stronger protocol such as TLSv1.2.
+The following openssl commands can be used to do a manual test:
+openssl s_client -connect ip:port -tls1_1
+
+If the test is successful, then the target support TLSv1.1
+(Disable the use of TLSv1.1 protocol in favor of a cryptographically stronger protocol such as TLSv1.2.
+The following openssl commands can be used to do a manual test:
+openssl s_client -connect ip:port -tls1_1
+
+If the test is successful, then the target support TLSv1.1
+)","Sixflag  Dynamic,Sixflags,SF wind and other,SF MOM for Day 1 CAB Review - 27 Nov 2025,NEW CR SF,SF IT&OT assets - 25Jan,SF2","No","No","25","LOW","370","Jan 22, 2021 03:30 PM","'-","General remote services","Patch Not Available","'-","'-","'-","1","Supporting TLSv1.1 by itself does not necessarily have any harmful consequences, but it is no longer considered best practice because of bad past experience with some vendor implementations of TLSv1.1.","No","3","72","","TLSv1.1 is supported
+","'-","","","",""
+"38170","SSL Certificate - Subject Common Name Does Not Match Server FQDN","2","2","Confirmed","Nov 05, 2025 02:41 PM","Nov 05, 2025 02:41 PM","TCP","3389","NEW","14198598","10.50.16.167","10.50.16.167","","Please install a server certificate whose Subject commonName or subjectAltName matches the server FQDN.(Please install a server certificate whose Subject commonName or subjectAltName matches the server FQDN.)","Sixflag  Dynamic,Sixflags,SF wind and other,SF MOM for Day 1 CAB Review - 27 Nov 2025,SF IT&OT assets - 25Jan,SF2","No","No","25","LOW","370","Jan 24, 2003 09:52 PM","'-","General remote services","Patch Not Available","'-","'-","'-","1","A man-in-the-middle attacker can exploit this vulnerability in tandem with a DNS cache poisoning attack to lure the client to another server, and then steal all the encryption communication.","No","3","72","","Certificate #0 CN=SF-PAM-PRA01 (SF-PAM-PRA01) doesn't resolve
+","'-","","","",""
+"38628","Secure Sockets Layer/Transport Layer Security (SSL/TLS) Server supports Transport Layer Security (TLSv1.0)","3","3","Confirmed","Nov 05, 2025 02:41 PM","Nov 05, 2025 02:41 PM","TCP","3389","NEW","14198598","10.50.16.167","10.50.16.167","","Disable the use of TLSv1.0 protocol in favor of a cryptographically stronger protocol such as TLSv1.2.
+The following openssl commands can be used to do a manual test:
+openssl s_client -connect ip:port -tls1
+
+If the test is successful, then the target support TLSv1
+(Disable the use of TLSv1.0 protocol in favor of a cryptographically stronger protocol such as TLSv1.2.
+The following openssl commands can be used to do a manual test:
+openssl s_client -connect ip:port -tls1
+
+If the test is successful, then the target support TLSv1
+)","Sixflag  Dynamic,Sixflags,SF wind and other,SF MOM for Day 1 CAB Review - 27 Nov 2025,SF IT&OT assets - 25Jan,SF2","No","No","30","LOW","370","Jul 06, 2016 12:55 AM","'-","General remote services","Patch Not Available","'-","'-","'-","1","An attacker can exploit cryptographic flaws to conduct man-in-the-middle type attacks or to decryption communications.<P>
+For example: An attacker could force a downgrade from the TLS protocol to the older SSLv3.0 protocol and exploit the POODLE vulnerability, read secure communications or maliciously modify messages.<P>
+<A HREF=""https://blog.qualys.com/ssllabs/2014/12/08/poodle-bites-tls"" TARGET=""_blank"">A POODLE-type</A> attack could also be launched directly at TLS without negotiating a downgrade.<P>
+
+","No","3","72","","TLSv1.0 is supported
+","'-","","","",""
+"38173","SSL Certificate - Signature Verification Failed Vulnerability","2","2","Confirmed","Nov 05, 2025 02:41 PM","Nov 05, 2025 02:41 PM","TCP","3389","NEW","14198598","10.50.16.167","10.50.16.167","","Ensure the SSL certificate is valid and trusted. Install a certificate signed by a trusted Certificate Authority and configure the complete certificate chain, including any required intermediate certificates. Replace expired or invalid certificates and ensure proper issuer and signature configuration (Ensure the SSL certificate is valid and trusted. Install a certificate signed by a trusted Certificate Authority and configure the complete certificate chain, including any required intermediate certificates. Replace expired or invalid certificates and ensure proper issuer and signature configuration )","Sixflag  Dynamic,Sixflags,SF wind and other,SF MOM for Day 1 CAB Review - 27 Nov 2025,SF IT&OT assets - 25Jan,SF2","No","No","50","MEDIUM","370","Jan 29, 2003 11:37 PM","'-","General remote services","Easy Exploit,Patch Not Available","'-","'-","'-","1","By exploiting this vulnerability, man-in-the-middle attacks in tandem with DNS cache poisoning can occur.
+<P>
+Exception:<BR>
+If the server communicates only with a restricted set of clients who have the server certificate or the trusted CA certificate, then the server or CA certificate may not be available publicly, and the scan will be unable to verify the signature.","No","3","72","","Certificate #0 CN=SF-PAM-PRA01 ISSUER:_CN=SF-PAM-PRA01 self signed certificate
+","'-","","","",""
+"38657","Birthday attacks against TLS ciphers with 64bit block size vulnerability (Sweet32)","3","3","Confirmed","Nov 05, 2025 02:41 PM","Nov 05, 2025 02:41 PM","TCP","3389","NEW","14198598","10.50.16.167","10.50.16.167","","Disable and stop using DES, 3DES, IDEA or RC2 ciphers.
+More information can be found at  Sweet32, Microsoft Windows TLS changes docs and Microsoft Transport Layer Security (TLS) registry settings(Disable and stop using DES, 3DES, IDEA or RC2 ciphers.<BR>
+https://docs.microsoft.com/en-us/windows-server/security/tls/tls-registry-settings)","Sixflag  Dynamic,Sixflags,SF wind and other,SF MOM for Day 1 CAB Review - 27 Nov 2025,SF IT&OT assets - 25Jan,SF2","No","No","42","MEDIUM","370","Mar 30, 2017 08:47 PM","'-","General remote services","Easy Exploit,Patch Not Available,Public Exploit","'-","'-","'-","1","Remote attackers can obtain cleartext data via a birthday attack against a long-duration encrypted session.","No","3","72","","#table cols=""6""
+CIPHER KEY-EXCHANGE AUTHENTICATION MAC ENCRYPTION(KEY-STRENGTH) GRADE
+TLSv1_WITH_64-BIT_CBC_CIPHERS_IS_SUPPORTED _ _ _ _ _
+DES-CBC3-SHA RSA RSA SHA1 3DES(168) MEDIUM
+TLSv1.1_WITH_64-BIT_CBC_CIPHERS_IS_SUPPORTED _ _ _ _ _
+DES-CBC3-SHA RSA RSA SHA1 3DES(168) MEDIUM
+TLSv1.2_WITH_64-BIT_CBC_CIPHERS_IS_SUPPORTED _ _ _ _ _
+DES-CBC3-SHA RSA RSA SHA1 3DES(168) MEDIUM
+","'-","","","",""
+"38794","Secure Sockets Layer/Transport Layer Security (SSL/TLS) Server Supports Transport Layer Security (TLSv1.1)","3","3","Confirmed","Nov 05, 2025 02:41 PM","Nov 05, 2025 02:41 PM","TCP","3389","NEW","14198598","10.50.16.167","10.50.16.167","","Disable the use of TLSv1.1 protocol in favor of a cryptographically stronger protocol such as TLSv1.2.
+The following openssl commands can be used to do a manual test:
+openssl s_client -connect ip:port -tls1_1
+
+If the test is successful, then the target support TLSv1.1
+(Disable the use of TLSv1.1 protocol in favor of a cryptographically stronger protocol such as TLSv1.2.
+The following openssl commands can be used to do a manual test:
+openssl s_client -connect ip:port -tls1_1
+
+If the test is successful, then the target support TLSv1.1
+)","Sixflag  Dynamic,Sixflags,SF wind and other,SF MOM for Day 1 CAB Review - 27 Nov 2025,SF IT&OT assets - 25Jan,SF2","No","No","25","LOW","370","Jan 22, 2021 03:30 PM","'-","General remote services","Patch Not Available","'-","'-","'-","1","Supporting TLSv1.1 by itself does not necessarily have any harmful consequences, but it is no longer considered best practice because of bad past experience with some vendor implementations of TLSv1.1.","No","3","72","","TLSv1.1 is supported
+","'-","","","",""
+"38794","Secure Sockets Layer/Transport Layer Security (SSL/TLS) Server Supports Transport Layer Security (TLSv1.1)","3","3","Confirmed","Nov 05, 2025 02:24 PM","Nov 05, 2025 02:24 PM","TCP","3389","NEW","14180410","10.50.16.165","10.50.16.165","","Disable the use of TLSv1.1 protocol in favor of a cryptographically stronger protocol such as TLSv1.2.
+The following openssl commands can be used to do a manual test:
+openssl s_client -connect ip:port -tls1_1
+
+If the test is successful, then the target support TLSv1.1
+(Disable the use of TLSv1.1 protocol in favor of a cryptographically stronger protocol such as TLSv1.2.
+The following openssl commands can be used to do a manual test:
+openssl s_client -connect ip:port -tls1_1
+
+If the test is successful, then the target support TLSv1.1
+)","Sixflag  Dynamic,Sixflags,SF wind and other,SF MOM for Day 1 CAB Review - 27 Nov 2025,NEW CR SF,SF IT&OT assets - 25Jan,SF2","No","No","25","LOW","370","Jan 22, 2021 03:30 PM","'-","General remote services","Patch Not Available","'-","'-","'-","1","Supporting TLSv1.1 by itself does not necessarily have any harmful consequences, but it is no longer considered best practice because of bad past experience with some vendor implementations of TLSv1.1.","No","3","72","","TLSv1.1 is supported
+","'-","","","",""
+"38170","SSL Certificate - Subject Common Name Does Not Match Server FQDN","2","2","Confirmed","Nov 05, 2025 02:24 PM","Nov 05, 2025 02:24 PM","TCP","3389","NEW","14180410","10.50.16.165","10.50.16.165","","Please install a server certificate whose Subject commonName or subjectAltName matches the server FQDN.(Please install a server certificate whose Subject commonName or subjectAltName matches the server FQDN.)","Sixflag  Dynamic,Sixflags,SF wind and other,SF MOM for Day 1 CAB Review - 27 Nov 2025,NEW CR SF,SF IT&OT assets - 25Jan,SF2","No","No","25","LOW","370","Jan 24, 2003 09:52 PM","'-","General remote services","Patch Not Available","'-","'-","'-","1","A man-in-the-middle attacker can exploit this vulnerability in tandem with a DNS cache poisoning attack to lure the client to another server, and then steal all the encryption communication.","No","3","72","","Certificate #0 CN=SF-PAM-BRG01 (SF-PAM-BRG01) doesn't resolve
+","'-","","","",""
+"38173","SSL Certificate - Signature Verification Failed Vulnerability","2","2","Confirmed","Nov 05, 2025 02:24 PM","Nov 05, 2025 02:24 PM","TCP","3389","NEW","14180410","10.50.16.165","10.50.16.165","","Ensure the SSL certificate is valid and trusted. Install a certificate signed by a trusted Certificate Authority and configure the complete certificate chain, including any required intermediate certificates. Replace expired or invalid certificates and ensure proper issuer and signature configuration (Ensure the SSL certificate is valid and trusted. Install a certificate signed by a trusted Certificate Authority and configure the complete certificate chain, including any required intermediate certificates. Replace expired or invalid certificates and ensure proper issuer and signature configuration )","Sixflag  Dynamic,Sixflags,SF wind and other,SF MOM for Day 1 CAB Review - 27 Nov 2025,NEW CR SF,SF IT&OT assets - 25Jan,SF2","No","No","50","MEDIUM","370","Jan 29, 2003 11:37 PM","'-","General remote services","Easy Exploit,Patch Not Available","'-","'-","'-","1","By exploiting this vulnerability, man-in-the-middle attacks in tandem with DNS cache poisoning can occur.
+<P>
+Exception:<BR>
+If the server communicates only with a restricted set of clients who have the server certificate or the trusted CA certificate, then the server or CA certificate may not be available publicly, and the scan will be unable to verify the signature.","No","3","72","","Certificate #0 CN=SF-PAM-BRG01 ISSUER:_CN=SF-PAM-BRG01 self signed certificate
+","'-","","","",""
+"38657","Birthday attacks against TLS ciphers with 64bit block size vulnerability (Sweet32)","3","3","Confirmed","Nov 05, 2025 02:24 PM","Nov 05, 2025 02:24 PM","TCP","3389","NEW","14180410","10.50.16.165","10.50.16.165","","Disable and stop using DES, 3DES, IDEA or RC2 ciphers.
+More information can be found at  Sweet32, Microsoft Windows TLS changes docs and Microsoft Transport Layer Security (TLS) registry settings(Disable and stop using DES, 3DES, IDEA or RC2 ciphers.<BR>
+https://docs.microsoft.com/en-us/windows-server/security/tls/tls-registry-settings)","Sixflag  Dynamic,Sixflags,SF wind and other,SF MOM for Day 1 CAB Review - 27 Nov 2025,NEW CR SF,SF IT&OT assets - 25Jan,SF2","No","No","42","MEDIUM","370","Mar 30, 2017 08:47 PM","'-","General remote services","Easy Exploit,Patch Not Available,Public Exploit","'-","'-","'-","1","Remote attackers can obtain cleartext data via a birthday attack against a long-duration encrypted session.","No","3","72","","#table cols=""6""
+CIPHER KEY-EXCHANGE AUTHENTICATION MAC ENCRYPTION(KEY-STRENGTH) GRADE
+TLSv1_WITH_64-BIT_CBC_CIPHERS_IS_SUPPORTED _ _ _ _ _
+DES-CBC3-SHA RSA RSA SHA1 3DES(168) MEDIUM
+TLSv1.1_WITH_64-BIT_CBC_CIPHERS_IS_SUPPORTED _ _ _ _ _
+DES-CBC3-SHA RSA RSA SHA1 3DES(168) MEDIUM
+TLSv1.2_WITH_64-BIT_CBC_CIPHERS_IS_SUPPORTED _ _ _ _ _
+DES-CBC3-SHA RSA RSA SHA1 3DES(168) MEDIUM
+","'-","","","",""
+"38628","Secure Sockets Layer/Transport Layer Security (SSL/TLS) Server supports Transport Layer Security (TLSv1.0)","3","3","Confirmed","Nov 05, 2025 02:24 PM","Nov 05, 2025 02:24 PM","TCP","3389","NEW","14180410","10.50.16.165","10.50.16.165","","Disable the use of TLSv1.0 protocol in favor of a cryptographically stronger protocol such as TLSv1.2.
+The following openssl commands can be used to do a manual test:
+openssl s_client -connect ip:port -tls1
+
+If the test is successful, then the target support TLSv1
+(Disable the use of TLSv1.0 protocol in favor of a cryptographically stronger protocol such as TLSv1.2.
+The following openssl commands can be used to do a manual test:
+openssl s_client -connect ip:port -tls1
+
+If the test is successful, then the target support TLSv1
+)","Sixflag  Dynamic,Sixflags,SF wind and other,SF MOM for Day 1 CAB Review - 27 Nov 2025,NEW CR SF,SF IT&OT assets - 25Jan,SF2","No","No","30","LOW","370","Jul 06, 2016 12:55 AM","'-","General remote services","Patch Not Available","'-","'-","'-","1","An attacker can exploit cryptographic flaws to conduct man-in-the-middle type attacks or to decryption communications.<P>
+For example: An attacker could force a downgrade from the TLS protocol to the older SSLv3.0 protocol and exploit the POODLE vulnerability, read secure communications or maliciously modify messages.<P>
+<A HREF=""https://blog.qualys.com/ssllabs/2014/12/08/poodle-bites-tls"" TARGET=""_blank"">A POODLE-type</A> attack could also be launched directly at TLS without negotiating a downgrade.<P>
+
+","No","3","72","","TLSv1.0 is supported
+","'-","","","",""
+"38794","Secure Sockets Layer/Transport Layer Security (SSL/TLS) Server Supports Transport Layer Security (TLSv1.1)","3","3","Confirmed","Nov 05, 2025 02:24 PM","Nov 05, 2025 02:24 PM","TCP","3389","NEW","14162248","10.50.16.171","10.50.16.171","","Disable the use of TLSv1.1 protocol in favor of a cryptographically stronger protocol such as TLSv1.2.
+The following openssl commands can be used to do a manual test:
+openssl s_client -connect ip:port -tls1_1
+
+If the test is successful, then the target support TLSv1.1
+(Disable the use of TLSv1.1 protocol in favor of a cryptographically stronger protocol such as TLSv1.2.
+The following openssl commands can be used to do a manual test:
+openssl s_client -connect ip:port -tls1_1
+
+If the test is successful, then the target support TLSv1.1
+)","Sixflag  Dynamic,Sixflags,SF wind and other,SF MOM for Day 1 CAB Review - 27 Nov 2025,NEW CR SF,SF IT&OT assets - 25Jan,SF2","No","No","25","LOW","370","Jan 22, 2021 03:30 PM","'-","General remote services","Patch Not Available","'-","'-","'-","1","Supporting TLSv1.1 by itself does not necessarily have any harmful consequences, but it is no longer considered best practice because of bad past experience with some vendor implementations of TLSv1.1.","No","3","72","","TLSv1.1 is supported
+","'-","","","",""
+"38628","Secure Sockets Layer/Transport Layer Security (SSL/TLS) Server supports Transport Layer Security (TLSv1.0)","3","3","Confirmed","Nov 05, 2025 02:24 PM","Nov 05, 2025 02:24 PM","TCP","3389","NEW","14162248","10.50.16.171","10.50.16.171","","Disable the use of TLSv1.0 protocol in favor of a cryptographically stronger protocol such as TLSv1.2.
+The following openssl commands can be used to do a manual test:
+openssl s_client -connect ip:port -tls1
+
+If the test is successful, then the target support TLSv1
+(Disable the use of TLSv1.0 protocol in favor of a cryptographically stronger protocol such as TLSv1.2.
+The following openssl commands can be used to do a manual test:
+openssl s_client -connect ip:port -tls1
+
+If the test is successful, then the target support TLSv1
+)","Sixflag  Dynamic,Sixflags,SF wind and other,SF MOM for Day 1 CAB Review - 27 Nov 2025,NEW CR SF,SF IT&OT assets - 25Jan,SF2","No","No","30","LOW","370","Jul 06, 2016 12:55 AM","'-","General remote services","Patch Not Available","'-","'-","'-","1","An attacker can exploit cryptographic flaws to conduct man-in-the-middle type attacks or to decryption communications.<P>
+For example: An attacker could force a downgrade from the TLS protocol to the older SSLv3.0 protocol and exploit the POODLE vulnerability, read secure communications or maliciously modify messages.<P>
+<A HREF=""https://blog.qualys.com/ssllabs/2014/12/08/poodle-bites-tls"" TARGET=""_blank"">A POODLE-type</A> attack could also be launched directly at TLS without negotiating a downgrade.<P>
+
+","No","3","72","","TLSv1.0 is supported
+","'-","","","",""
+"38657","Birthday attacks against TLS ciphers with 64bit block size vulnerability (Sweet32)","3","3","Confirmed","Nov 05, 2025 02:24 PM","Nov 05, 2025 02:24 PM","TCP","3389","NEW","14162248","10.50.16.171","10.50.16.171","","Disable and stop using DES, 3DES, IDEA or RC2 ciphers.
+More information can be found at  Sweet32, Microsoft Windows TLS changes docs and Microsoft Transport Layer Security (TLS) registry settings(Disable and stop using DES, 3DES, IDEA or RC2 ciphers.<BR>
+https://docs.microsoft.com/en-us/windows-server/security/tls/tls-registry-settings)","Sixflag  Dynamic,Sixflags,SF wind and other,SF MOM for Day 1 CAB Review - 27 Nov 2025,NEW CR SF,SF IT&OT assets - 25Jan,SF2","No","No","42","MEDIUM","370","Mar 30, 2017 08:47 PM","'-","General remote services","Easy Exploit,Patch Not Available,Public Exploit","'-","'-","'-","1","Remote attackers can obtain cleartext data via a birthday attack against a long-duration encrypted session.","No","3","72","","#table cols=""6""
+CIPHER KEY-EXCHANGE AUTHENTICATION MAC ENCRYPTION(KEY-STRENGTH) GRADE
+TLSv1_WITH_64-BIT_CBC_CIPHERS_IS_SUPPORTED _ _ _ _ _
+DES-CBC3-SHA RSA RSA SHA1 3DES(168) MEDIUM
+TLSv1.1_WITH_64-BIT_CBC_CIPHERS_IS_SUPPORTED _ _ _ _ _
+DES-CBC3-SHA RSA RSA SHA1 3DES(168) MEDIUM
+TLSv1.2_WITH_64-BIT_CBC_CIPHERS_IS_SUPPORTED _ _ _ _ _
+DES-CBC3-SHA RSA RSA SHA1 3DES(168) MEDIUM
+","'-","","","",""
+"38170","SSL Certificate - Subject Common Name Does Not Match Server FQDN","2","2","Confirmed","Nov 05, 2025 02:24 PM","Nov 05, 2025 02:24 PM","TCP","3389","NEW","14162248","10.50.16.171","10.50.16.171","","Please install a server certificate whose Subject commonName or subjectAltName matches the server FQDN.(Please install a server certificate whose Subject commonName or subjectAltName matches the server FQDN.)","Sixflag  Dynamic,Sixflags,SF wind and other,SF MOM for Day 1 CAB Review - 27 Nov 2025,NEW CR SF,SF IT&OT assets - 25Jan,SF2","No","No","25","LOW","370","Jan 24, 2003 09:52 PM","'-","General remote services","Patch Not Available","'-","'-","'-","1","A man-in-the-middle attacker can exploit this vulnerability in tandem with a DNS cache poisoning attack to lure the client to another server, and then steal all the encryption communication.","No","3","72","","Certificate #0 CN=SF-PAM-JMP03 (SF-PAM-JMP03) doesn't resolve
+","'-","","","",""
+"38173","SSL Certificate - Signature Verification Failed Vulnerability","2","2","Confirmed","Nov 05, 2025 02:24 PM","Nov 05, 2025 02:24 PM","TCP","3389","NEW","14162248","10.50.16.171","10.50.16.171","","Ensure the SSL certificate is valid and trusted. Install a certificate signed by a trusted Certificate Authority and configure the complete certificate chain, including any required intermediate certificates. Replace expired or invalid certificates and ensure proper issuer and signature configuration (Ensure the SSL certificate is valid and trusted. Install a certificate signed by a trusted Certificate Authority and configure the complete certificate chain, including any required intermediate certificates. Replace expired or invalid certificates and ensure proper issuer and signature configuration )","Sixflag  Dynamic,Sixflags,SF wind and other,SF MOM for Day 1 CAB Review - 27 Nov 2025,NEW CR SF,SF IT&OT assets - 25Jan,SF2","No","No","50","MEDIUM","370","Jan 29, 2003 11:37 PM","'-","General remote services","Easy Exploit,Patch Not Available","'-","'-","'-","1","By exploiting this vulnerability, man-in-the-middle attacks in tandem with DNS cache poisoning can occur.
+<P>
+Exception:<BR>
+If the server communicates only with a restricted set of clients who have the server certificate or the trusted CA certificate, then the server or CA certificate may not be available publicly, and the scan will be unable to verify the signature.","No","3","72","","Certificate #0 CN=SF-PAM-JMP03 ISSUER:_CN=SF-PAM-JMP03 self signed certificate
+","'-","","","",""
+"38170","SSL Certificate - Subject Common Name Does Not Match Server FQDN","2","2","Confirmed","Nov 05, 2025 02:24 PM","Nov 05, 2025 02:24 PM","TCP","3389","NEW","14180411","10.50.16.161","10.50.16.161","","Please install a server certificate whose Subject commonName or subjectAltName matches the server FQDN.(Please install a server certificate whose Subject commonName or subjectAltName matches the server FQDN.)","Sixflag  Dynamic,Sixflags,SF wind and other,SF MOM for Day 1 CAB Review - 27 Nov 2025,SF IT&OT assets - 25Jan,SF2","No","No","25","LOW","370","Jan 24, 2003 09:52 PM","'-","General remote services","Patch Not Available","'-","'-","'-","1","A man-in-the-middle attacker can exploit this vulnerability in tandem with a DNS cache poisoning attack to lure the client to another server, and then steal all the encryption communication.","No","3","72","","Certificate #0 CN=SF-PAM-APP01-0 (SF-PAM-APP01-0) doesn't resolve
+","'-","","","",""
+"38628","Secure Sockets Layer/Transport Layer Security (SSL/TLS) Server supports Transport Layer Security (TLSv1.0)","3","3","Confirmed","Nov 05, 2025 02:24 PM","Nov 05, 2025 02:24 PM","TCP","3389","NEW","14180411","10.50.16.161","10.50.16.161","","Disable the use of TLSv1.0 protocol in favor of a cryptographically stronger protocol such as TLSv1.2.
+The following openssl commands can be used to do a manual test:
+openssl s_client -connect ip:port -tls1
+
+If the test is successful, then the target support TLSv1
+(Disable the use of TLSv1.0 protocol in favor of a cryptographically stronger protocol such as TLSv1.2.
+The following openssl commands can be used to do a manual test:
+openssl s_client -connect ip:port -tls1
+
+If the test is successful, then the target support TLSv1
+)","Sixflag  Dynamic,Sixflags,SF wind and other,SF MOM for Day 1 CAB Review - 27 Nov 2025,SF IT&OT assets - 25Jan,SF2","No","No","30","LOW","370","Jul 06, 2016 12:55 AM","'-","General remote services","Patch Not Available","'-","'-","'-","1","An attacker can exploit cryptographic flaws to conduct man-in-the-middle type attacks or to decryption communications.<P>
+For example: An attacker could force a downgrade from the TLS protocol to the older SSLv3.0 protocol and exploit the POODLE vulnerability, read secure communications or maliciously modify messages.<P>
+<A HREF=""https://blog.qualys.com/ssllabs/2014/12/08/poodle-bites-tls"" TARGET=""_blank"">A POODLE-type</A> attack could also be launched directly at TLS without negotiating a downgrade.<P>
+
+","No","3","72","","TLSv1.0 is supported
+","'-","","","",""
+"38657","Birthday attacks against TLS ciphers with 64bit block size vulnerability (Sweet32)","3","3","Confirmed","Nov 05, 2025 02:24 PM","Nov 05, 2025 02:24 PM","TCP","3389","NEW","14180411","10.50.16.161","10.50.16.161","","Disable and stop using DES, 3DES, IDEA or RC2 ciphers.
+More information can be found at  Sweet32, Microsoft Windows TLS changes docs and Microsoft Transport Layer Security (TLS) registry settings(Disable and stop using DES, 3DES, IDEA or RC2 ciphers.<BR>
+https://docs.microsoft.com/en-us/windows-server/security/tls/tls-registry-settings)","Sixflag  Dynamic,Sixflags,SF wind and other,SF MOM for Day 1 CAB Review - 27 Nov 2025,SF IT&OT assets - 25Jan,SF2","No","No","42","MEDIUM","370","Mar 30, 2017 08:47 PM","'-","General remote services","Easy Exploit,Patch Not Available,Public Exploit","'-","'-","'-","1","Remote attackers can obtain cleartext data via a birthday attack against a long-duration encrypted session.","No","3","72","","#table cols=""6""
+CIPHER KEY-EXCHANGE AUTHENTICATION MAC ENCRYPTION(KEY-STRENGTH) GRADE
+TLSv1_WITH_64-BIT_CBC_CIPHERS_IS_SUPPORTED _ _ _ _ _
+DES-CBC3-SHA RSA RSA SHA1 3DES(168) MEDIUM
+TLSv1.1_WITH_64-BIT_CBC_CIPHERS_IS_SUPPORTED _ _ _ _ _
+DES-CBC3-SHA RSA RSA SHA1 3DES(168) MEDIUM
+TLSv1.2_WITH_64-BIT_CBC_CIPHERS_IS_SUPPORTED _ _ _ _ _
+DES-CBC3-SHA RSA RSA SHA1 3DES(168) MEDIUM
+","'-","","","",""
+"38794","Secure Sockets Layer/Transport Layer Security (SSL/TLS) Server Supports Transport Layer Security (TLSv1.1)","3","3","Confirmed","Nov 05, 2025 02:24 PM","Nov 05, 2025 02:24 PM","TCP","3389","NEW","14180411","10.50.16.161","10.50.16.161","","Disable the use of TLSv1.1 protocol in favor of a cryptographically stronger protocol such as TLSv1.2.
+The following openssl commands can be used to do a manual test:
+openssl s_client -connect ip:port -tls1_1
+
+If the test is successful, then the target support TLSv1.1
+(Disable the use of TLSv1.1 protocol in favor of a cryptographically stronger protocol such as TLSv1.2.
+The following openssl commands can be used to do a manual test:
+openssl s_client -connect ip:port -tls1_1
+
+If the test is successful, then the target support TLSv1.1
+)","Sixflag  Dynamic,Sixflags,SF wind and other,SF MOM for Day 1 CAB Review - 27 Nov 2025,SF IT&OT assets - 25Jan,SF2","No","No","25","LOW","370","Jan 22, 2021 03:30 PM","'-","General remote services","Patch Not Available","'-","'-","'-","1","Supporting TLSv1.1 by itself does not necessarily have any harmful consequences, but it is no longer considered best practice because of bad past experience with some vendor implementations of TLSv1.1.","No","3","72","","TLSv1.1 is supported
+","'-","","","",""
+"38173","SSL Certificate - Signature Verification Failed Vulnerability","2","2","Confirmed","Nov 05, 2025 02:24 PM","Nov 05, 2025 02:24 PM","TCP","3389","NEW","14180411","10.50.16.161","10.50.16.161","","Ensure the SSL certificate is valid and trusted. Install a certificate signed by a trusted Certificate Authority and configure the complete certificate chain, including any required intermediate certificates. Replace expired or invalid certificates and ensure proper issuer and signature configuration (Ensure the SSL certificate is valid and trusted. Install a certificate signed by a trusted Certificate Authority and configure the complete certificate chain, including any required intermediate certificates. Replace expired or invalid certificates and ensure proper issuer and signature configuration )","Sixflag  Dynamic,Sixflags,SF wind and other,SF MOM for Day 1 CAB Review - 27 Nov 2025,SF IT&OT assets - 25Jan,SF2","No","No","50","MEDIUM","370","Jan 29, 2003 11:37 PM","'-","General remote services","Easy Exploit,Patch Not Available","'-","'-","'-","1","By exploiting this vulnerability, man-in-the-middle attacks in tandem with DNS cache poisoning can occur.
+<P>
+Exception:<BR>
+If the server communicates only with a restricted set of clients who have the server certificate or the trusted CA certificate, then the server or CA certificate may not be available publicly, and the scan will be unable to verify the signature.","No","3","72","","Certificate #0 CN=SF-PAM-APP01-0 ISSUER:_CN=SF-PAM-APP01-0 self signed certificate
+","'-","","","",""
+"38794","Secure Sockets Layer/Transport Layer Security (SSL/TLS) Server Supports Transport Layer Security (TLSv1.1)","3","3","Confirmed","Nov 05, 2025 02:24 PM","Nov 05, 2025 02:24 PM","TCP","3389","NEW","14049713","10.50.16.163","10.50.16.163","","Disable the use of TLSv1.1 protocol in favor of a cryptographically stronger protocol such as TLSv1.2.
+The following openssl commands can be used to do a manual test:
+openssl s_client -connect ip:port -tls1_1
+
+If the test is successful, then the target support TLSv1.1
+(Disable the use of TLSv1.1 protocol in favor of a cryptographically stronger protocol such as TLSv1.2.
+The following openssl commands can be used to do a manual test:
+openssl s_client -connect ip:port -tls1_1
+
+If the test is successful, then the target support TLSv1.1
+)","Sixflag  Dynamic,Sixflags,SF wind and other,SF MOM for Day 1 CAB Review - 27 Nov 2025,SF IT&OT assets - 25Jan,SF2","No","No","25","LOW","370","Jan 22, 2021 03:30 PM","'-","General remote services","Patch Not Available","'-","'-","'-","1","Supporting TLSv1.1 by itself does not necessarily have any harmful consequences, but it is no longer considered best practice because of bad past experience with some vendor implementations of TLSv1.1.","No","3","72","","TLSv1.1 is supported
+","'-","","","",""
+"38657","Birthday attacks against TLS ciphers with 64bit block size vulnerability (Sweet32)","3","3","Confirmed","Nov 05, 2025 02:24 PM","Nov 05, 2025 02:24 PM","TCP","3389","NEW","14049713","10.50.16.163","10.50.16.163","","Disable and stop using DES, 3DES, IDEA or RC2 ciphers.
+More information can be found at  Sweet32, Microsoft Windows TLS changes docs and Microsoft Transport Layer Security (TLS) registry settings(Disable and stop using DES, 3DES, IDEA or RC2 ciphers.<BR>
+https://docs.microsoft.com/en-us/windows-server/security/tls/tls-registry-settings)","Sixflag  Dynamic,Sixflags,SF wind and other,SF MOM for Day 1 CAB Review - 27 Nov 2025,SF IT&OT assets - 25Jan,SF2","No","No","42","MEDIUM","370","Mar 30, 2017 08:47 PM","'-","General remote services","Easy Exploit,Patch Not Available,Public Exploit","'-","'-","'-","1","Remote attackers can obtain cleartext data via a birthday attack against a long-duration encrypted session.","No","3","72","","#table cols=""6""
+CIPHER KEY-EXCHANGE AUTHENTICATION MAC ENCRYPTION(KEY-STRENGTH) GRADE
+TLSv1_WITH_64-BIT_CBC_CIPHERS_IS_SUPPORTED _ _ _ _ _
+DES-CBC3-SHA RSA RSA SHA1 3DES(168) MEDIUM
+TLSv1.1_WITH_64-BIT_CBC_CIPHERS_IS_SUPPORTED _ _ _ _ _
+DES-CBC3-SHA RSA RSA SHA1 3DES(168) MEDIUM
+TLSv1.2_WITH_64-BIT_CBC_CIPHERS_IS_SUPPORTED _ _ _ _ _
+DES-CBC3-SHA RSA RSA SHA1 3DES(168) MEDIUM
+","'-","","","",""
+"38628","Secure Sockets Layer/Transport Layer Security (SSL/TLS) Server supports Transport Layer Security (TLSv1.0)","3","3","Confirmed","Nov 05, 2025 02:24 PM","Nov 05, 2025 02:24 PM","TCP","3389","NEW","14049713","10.50.16.163","10.50.16.163","","Disable the use of TLSv1.0 protocol in favor of a cryptographically stronger protocol such as TLSv1.2.
+The following openssl commands can be used to do a manual test:
+openssl s_client -connect ip:port -tls1
+
+If the test is successful, then the target support TLSv1
+(Disable the use of TLSv1.0 protocol in favor of a cryptographically stronger protocol such as TLSv1.2.
+The following openssl commands can be used to do a manual test:
+openssl s_client -connect ip:port -tls1
+
+If the test is successful, then the target support TLSv1
+)","Sixflag  Dynamic,Sixflags,SF wind and other,SF MOM for Day 1 CAB Review - 27 Nov 2025,SF IT&OT assets - 25Jan,SF2","No","No","30","LOW","370","Jul 06, 2016 12:55 AM","'-","General remote services","Patch Not Available","'-","'-","'-","1","An attacker can exploit cryptographic flaws to conduct man-in-the-middle type attacks or to decryption communications.<P>
+For example: An attacker could force a downgrade from the TLS protocol to the older SSLv3.0 protocol and exploit the POODLE vulnerability, read secure communications or maliciously modify messages.<P>
+<A HREF=""https://blog.qualys.com/ssllabs/2014/12/08/poodle-bites-tls"" TARGET=""_blank"">A POODLE-type</A> attack could also be launched directly at TLS without negotiating a downgrade.<P>
+
+","No","3","72","","TLSv1.0 is supported
+","'-","","","",""
+"38173","SSL Certificate - Signature Verification Failed Vulnerability","2","2","Confirmed","Nov 05, 2025 02:24 PM","Nov 05, 2025 02:24 PM","TCP","3389","NEW","14049713","10.50.16.163","10.50.16.163","","Ensure the SSL certificate is valid and trusted. Install a certificate signed by a trusted Certificate Authority and configure the complete certificate chain, including any required intermediate certificates. Replace expired or invalid certificates and ensure proper issuer and signature configuration (Ensure the SSL certificate is valid and trusted. Install a certificate signed by a trusted Certificate Authority and configure the complete certificate chain, including any required intermediate certificates. Replace expired or invalid certificates and ensure proper issuer and signature configuration )","Sixflag  Dynamic,Sixflags,SF wind and other,SF MOM for Day 1 CAB Review - 27 Nov 2025,SF IT&OT assets - 25Jan,SF2","No","No","50","MEDIUM","370","Jan 29, 2003 11:37 PM","'-","General remote services","Easy Exploit,Patch Not Available","'-","'-","'-","1","By exploiting this vulnerability, man-in-the-middle attacks in tandem with DNS cache poisoning can occur.
+<P>
+Exception:<BR>
+If the server communicates only with a restricted set of clients who have the server certificate or the trusted CA certificate, then the server or CA certificate may not be available publicly, and the scan will be unable to verify the signature.","No","3","72","","Certificate #0 CN=SF-PAM-RDS01 ISSUER:_CN=SF-PAM-RDS01 self signed certificate
+","'-","","","",""
+"38170","SSL Certificate - Subject Common Name Does Not Match Server FQDN","2","2","Confirmed","Nov 05, 2025 02:24 PM","Nov 05, 2025 02:24 PM","TCP","3389","NEW","14049713","10.50.16.163","10.50.16.163","","Please install a server certificate whose Subject commonName or subjectAltName matches the server FQDN.(Please install a server certificate whose Subject commonName or subjectAltName matches the server FQDN.)","Sixflag  Dynamic,Sixflags,SF wind and other,SF MOM for Day 1 CAB Review - 27 Nov 2025,SF IT&OT assets - 25Jan,SF2","No","No","25","LOW","370","Jan 24, 2003 09:52 PM","'-","General remote services","Patch Not Available","'-","'-","'-","1","A man-in-the-middle attacker can exploit this vulnerability in tandem with a DNS cache poisoning attack to lure the client to another server, and then steal all the encryption communication.","No","3","72","","Certificate #0 CN=SF-PAM-RDS01 (SF-PAM-RDS01) doesn't resolve
+","'-","","","",""
+"38170","SSL Certificate - Subject Common Name Does Not Match Server FQDN","2","2","Confirmed","Nov 05, 2025 02:24 PM","Nov 05, 2025 02:24 PM","TCP","3389","NEW","14157656","10.50.16.12","10.50.16.12","","Please install a server certificate whose Subject commonName or subjectAltName matches the server FQDN.(Please install a server certificate whose Subject commonName or subjectAltName matches the server FQDN.)","Sixflag  Dynamic,Sixflags,SF wind and other,SF MOM for Day 1 CAB Review - 27 Nov 2025,SF IT&OT assets - 25Jan,Service Now,SF2","No","No","25","LOW","370","Jan 24, 2003 09:52 PM","'-","General remote services","Patch Not Available","'-","'-","'-","1","A man-in-the-middle attacker can exploit this vulnerability in tandem with a DNS cache poisoning attack to lure the client to another server, and then steal all the encryption communication.","No","3","72","","Certificate #0 CN=SF-SN-DIS02-0 (SF-SN-DIS02-0) doesn't resolve
+","'-","","","",""
+"38794","Secure Sockets Layer/Transport Layer Security (SSL/TLS) Server Supports Transport Layer Security (TLSv1.1)","3","3","Confirmed","Nov 05, 2025 02:24 PM","Nov 05, 2025 02:24 PM","TCP","3389","NEW","14157656","10.50.16.12","10.50.16.12","","Disable the use of TLSv1.1 protocol in favor of a cryptographically stronger protocol such as TLSv1.2.
+The following openssl commands can be used to do a manual test:
+openssl s_client -connect ip:port -tls1_1
+
+If the test is successful, then the target support TLSv1.1
+(Disable the use of TLSv1.1 protocol in favor of a cryptographically stronger protocol such as TLSv1.2.
+The following openssl commands can be used to do a manual test:
+openssl s_client -connect ip:port -tls1_1
+
+If the test is successful, then the target support TLSv1.1
+)","Sixflag  Dynamic,Sixflags,SF wind and other,SF MOM for Day 1 CAB Review - 27 Nov 2025,SF IT&OT assets - 25Jan,Service Now,SF2","No","No","25","LOW","370","Jan 22, 2021 03:30 PM","'-","General remote services","Patch Not Available","'-","'-","'-","1","Supporting TLSv1.1 by itself does not necessarily have any harmful consequences, but it is no longer considered best practice because of bad past experience with some vendor implementations of TLSv1.1.","No","3","72","","TLSv1.1 is supported
+","'-","","","",""
+"38628","Secure Sockets Layer/Transport Layer Security (SSL/TLS) Server supports Transport Layer Security (TLSv1.0)","3","3","Confirmed","Nov 05, 2025 02:24 PM","Nov 05, 2025 02:24 PM","TCP","3389","NEW","14157656","10.50.16.12","10.50.16.12","","Disable the use of TLSv1.0 protocol in favor of a cryptographically stronger protocol such as TLSv1.2.
+The following openssl commands can be used to do a manual test:
+openssl s_client -connect ip:port -tls1
+
+If the test is successful, then the target support TLSv1
+(Disable the use of TLSv1.0 protocol in favor of a cryptographically stronger protocol such as TLSv1.2.
+The following openssl commands can be used to do a manual test:
+openssl s_client -connect ip:port -tls1
+
+If the test is successful, then the target support TLSv1
+)","Sixflag  Dynamic,Sixflags,SF wind and other,SF MOM for Day 1 CAB Review - 27 Nov 2025,SF IT&OT assets - 25Jan,Service Now,SF2","No","No","30","LOW","370","Jul 06, 2016 12:55 AM","'-","General remote services","Patch Not Available","'-","'-","'-","1","An attacker can exploit cryptographic flaws to conduct man-in-the-middle type attacks or to decryption communications.<P>
+For example: An attacker could force a downgrade from the TLS protocol to the older SSLv3.0 protocol and exploit the POODLE vulnerability, read secure communications or maliciously modify messages.<P>
+<A HREF=""https://blog.qualys.com/ssllabs/2014/12/08/poodle-bites-tls"" TARGET=""_blank"">A POODLE-type</A> attack could also be launched directly at TLS without negotiating a downgrade.<P>
+
+","No","3","72","","TLSv1.0 is supported
+","'-","","","",""
+"38657","Birthday attacks against TLS ciphers with 64bit block size vulnerability (Sweet32)","3","3","Confirmed","Nov 05, 2025 02:24 PM","Nov 05, 2025 02:24 PM","TCP","3389","NEW","14157656","10.50.16.12","10.50.16.12","","Disable and stop using DES, 3DES, IDEA or RC2 ciphers.
+More information can be found at  Sweet32, Microsoft Windows TLS changes docs and Microsoft Transport Layer Security (TLS) registry settings(Disable and stop using DES, 3DES, IDEA or RC2 ciphers.<BR>
+https://docs.microsoft.com/en-us/windows-server/security/tls/tls-registry-settings)","Sixflag  Dynamic,Sixflags,SF wind and other,SF MOM for Day 1 CAB Review - 27 Nov 2025,SF IT&OT assets - 25Jan,Service Now,SF2","No","No","42","MEDIUM","370","Mar 30, 2017 08:47 PM","'-","General remote services","Easy Exploit,Patch Not Available,Public Exploit","'-","'-","'-","1","Remote attackers can obtain cleartext data via a birthday attack against a long-duration encrypted session.","No","3","72","","#table cols=""6""
+CIPHER KEY-EXCHANGE AUTHENTICATION MAC ENCRYPTION(KEY-STRENGTH) GRADE
+TLSv1_WITH_64-BIT_CBC_CIPHERS_IS_SUPPORTED _ _ _ _ _
+DES-CBC3-SHA RSA RSA SHA1 3DES(168) MEDIUM
+TLSv1.1_WITH_64-BIT_CBC_CIPHERS_IS_SUPPORTED _ _ _ _ _
+DES-CBC3-SHA RSA RSA SHA1 3DES(168) MEDIUM
+TLSv1.2_WITH_64-BIT_CBC_CIPHERS_IS_SUPPORTED _ _ _ _ _
+DES-CBC3-SHA RSA RSA SHA1 3DES(168) MEDIUM
+","'-","","","",""
+"38173","SSL Certificate - Signature Verification Failed Vulnerability","2","2","Confirmed","Nov 05, 2025 02:24 PM","Nov 05, 2025 02:24 PM","TCP","3389","NEW","14157656","10.50.16.12","10.50.16.12","","Ensure the SSL certificate is valid and trusted. Install a certificate signed by a trusted Certificate Authority and configure the complete certificate chain, including any required intermediate certificates. Replace expired or invalid certificates and ensure proper issuer and signature configuration (Ensure the SSL certificate is valid and trusted. Install a certificate signed by a trusted Certificate Authority and configure the complete certificate chain, including any required intermediate certificates. Replace expired or invalid certificates and ensure proper issuer and signature configuration )","Sixflag  Dynamic,Sixflags,SF wind and other,SF MOM for Day 1 CAB Review - 27 Nov 2025,SF IT&OT assets - 25Jan,Service Now,SF2","No","No","50","MEDIUM","370","Jan 29, 2003 11:37 PM","'-","General remote services","Easy Exploit,Patch Not Available","'-","'-","'-","1","By exploiting this vulnerability, man-in-the-middle attacks in tandem with DNS cache poisoning can occur.
+<P>
+Exception:<BR>
+If the server communicates only with a restricted set of clients who have the server certificate or the trusted CA certificate, then the server or CA certificate may not be available publicly, and the scan will be unable to verify the signature.","No","3","72","","Certificate #0 CN=SF-SN-DIS02-0 ISSUER:_CN=SF-SN-DIS02-0 self signed certificate
+","'-","","","",""
